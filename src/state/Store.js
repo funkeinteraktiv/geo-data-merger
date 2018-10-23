@@ -1,8 +1,10 @@
 import createStore from 'unistore';
 
 const Store = createStore({
-  isLoading: true,
-  data: false
+  baseData: [],
+  mergeData: [],
+  baseKey: '',
+  mergeKey: ''
 });
 
 export default Store;

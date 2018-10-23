@@ -1,18 +1,23 @@
-import fetch from 'unfetch';
+/* eslint-disable */
+const setBaseData = (state, data) => {
+  return { baseData: data };
+}
 
-const loadData = Store => async () => {
-  Store.setState({ isLoading: true });
+const setMergeData = (state, data) => {
+  return { mergeData: data };
+}
 
-  let data = null;
-  try {
-    const res = await fetch('public/data/sample.json');
-    data = await res.json();
-  } catch (err) {
-    console.log(err);
-  }
-  return { data, isLoading: false };
-};
+const setBaseKey = (state, key) => {
+  return { baseKey: key };
+}
+
+const setMergeKey = (state, key) => {
+  return { mergeKey: key };
+}
 
 export default Store => ({
-  loadData: loadData(Store)
+  setBaseData,
+  setMergeData,
+  setBaseKey,
+  setMergeKey
 });

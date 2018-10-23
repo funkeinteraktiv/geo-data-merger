@@ -1,11 +1,14 @@
 import * as D3Dsv from 'd3-dsv';
+import * as TopoJSON from 'topojson-client';
 import { getType } from '@turf/invariant';
+
+const csvParser = D3Dsv.dsvFormat('\t');
 
 export function parseCsv(file) {
   let res = false;
 
   try {
-    res = D3Dsv.csvParse(file);
+    res = csvParser.parse(file);
   } catch (e) {
     res = false;
   }
@@ -29,36 +32,60 @@ export function isGeoJSON(data) {
 }
 
 export function isTopoJSON() {
+  // @TODO: how to detect topojson files
   return false;
 }
 
-export function detectJSONType(data) {
+export function geoJSON2JSON(geoJSON) {
+  return geoJSON.features.map(feat => Object.assign({}, {
+    ...feat.properties,
+    __geometry: feat.geometry,
+    __id: feat.id
+  }));
+}
+
+export function topoJSON2JSON(topoJSON) {
+  const geoJSON = TopoJSON.feature(topoJSON);
+  return geoJSON2JSON(geoJSON);
+}
+
+export function getColumns(data) {
+  return data
+    .reduce((prev, curr) => [...new Set(prev.concat(Object.keys(curr)))], [])
+    .filter(col => col.indexOf('__') !== 0);
+}
+
+export function unifyData(data) {
+  let res = [];
+
   if (isGeoJSON(data)) {
-    return 'geojson';
+    res = geoJSON2JSON(data);
   }
+
   if (isTopoJSON(data)) {
-    return 'topojson';
+    res = topoJSON2JSON(data);
   }
-  return 'json';
+
+  if (data.length) {
+    res = data;
+  }
+
+  res.columns = getColumns(res);
+  return res;
 }
 
 export function parseFile(file) {
-  const jsonData = parseJSON(file);
+  const jsonData = parseJSON(file) || parseCsv(file);
 
-  if (jsonData) {
-    const fileType = detectJSONType(jsonData);
-    return { type: fileType, data: jsonData };
+  if (!jsonData) {
+    // file is not json or csv
+    return false;
   }
 
-  const csvData = parseCsv(file);
-
-  if (csvData) {
-    return { type: 'csv', data: csvData };
-  }
-
-  return false;
+  return unifyData(jsonData);
 }
 
 export default {
-  parseFile
+  parseFile,
+  getColumns
 };

@@ -2,19 +2,26 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import Uppy from '@uppy/core';
 import DragDrop from '@uppy/react/lib/DragDrop';
+import styled from 'styled-components';
 
 import '@uppy/core/dist/style.css';
 import '@uppy/drag-drop/dist/style.css';
 
 import { parseFile } from '~/utils';
 
+const DragDropWrapper = styled.div`
+  width: 100%;
+`;
+
 class FileHandler extends PureComponent {
   static propTypes = {
-    onChange: PropTypes.func
+    onChange: PropTypes.func,
+    className: PropTypes.string
   }
 
   static defaultProps = {
-    onChange: () => {}
+    onChange: () => {},
+    className: ''
   }
 
   constructor() {
@@ -39,8 +46,10 @@ class FileHandler extends PureComponent {
     reader.onload = () => {
       const content = reader.result;
       const result = parseFile(content);
-      console.log(result);
-      this.props.onChange(result);
+
+      if (result) {
+        this.props.onChange(result);
+      }
     };
 
     reader.readAsText(data.data);
@@ -48,9 +57,9 @@ class FileHandler extends PureComponent {
 
   render() {
     return (
-      <div>
+      <DragDropWrapper className={this.props.className}>
         <DragDrop uppy={this.uppy} />
-      </div>
+      </DragDropWrapper>
     );
   }
 }

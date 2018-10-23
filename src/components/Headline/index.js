@@ -1,11 +1,11 @@
 import React from 'react';
-import styled from 'styled-components';
-
-const Headline = styled.div``;
+import { Flex, Box } from '@rebass/grid';
 
 export default () => (
-  <Headline>
-    <h1>(Geo)DataMerger</h1>
-    <p>A small tool for merging different Datasets together.</p>
-  </Headline>
+  <Flex>
+    <Box width={1} px={2}>
+      <h1>(Geo)DataMerger</h1>
+      <p>A small tool for merging different Datasets together.</p>
+    </Box>
+  </Flex>
 );
