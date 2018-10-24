@@ -4,7 +4,8 @@ const Store = createStore({
   baseData: [],
   mergeData: [],
   baseKey: '',
-  mergeKey: ''
+  mergeKey: '',
+  downloadFormat: config.downloadFormats[0]
 });
 
 export default Store;

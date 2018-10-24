@@ -18,10 +18,18 @@ class KeySelectWidget extends PureComponent {
       <Widget title="Step 2: Select keys">
         <Flex>
           <Box width={1 / 2} px={2}>
-            <Select options={baseKeys} onChange={this.props.setBaseKey} />
+            <Select
+              options={baseKeys}
+              onChange={this.props.setBaseKey}
+              placeholder="Select key..."
+            />
           </Box>
           <Box width={1 / 2} px={2}>
-            <Select options={mergeKeys} onChange={this.props.setMergeKey} />
+            <Select
+              options={mergeKeys}
+              onChange={this.props.setMergeKey}
+              placeholder="Select key..."
+            />
           </Box>
         </Flex>
       </Widget>

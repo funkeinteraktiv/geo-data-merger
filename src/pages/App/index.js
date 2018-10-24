@@ -5,6 +5,7 @@ import Headline from '~/components/Headline';
 import FileUploadWidget from '~/widgets/FileUploadWidget';
 import KeySelectWidget from '~/widgets/KeySelectWidget';
 import ResultWidget from '~/widgets/ResultWidget';
+import DownloadWidget from '~/widgets/DownloadWidget';
 
 class App extends PureComponent {
   render() {
@@ -19,6 +20,7 @@ class App extends PureComponent {
         <FileUploadWidget />
         <KeySelectWidget />
         <ResultWidget />
+        <DownloadWidget />
       </Box>
     );
   }

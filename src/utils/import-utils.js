@@ -1,5 +1,5 @@
 import * as D3Dsv from 'd3-dsv';
-import * as TopoJSON from 'topojson-client';
+import * as TopoJSON from 'topojson';
 import { getType } from '@turf/invariant';
 
 function regexEscape(str) {
@@ -12,7 +12,7 @@ function getDelimiterRxp(delim) {
 }
 
 export function guessDelimiter(file) {
-  return [',', ';', '\t'].find((delim) => {
+  return config.defaultDelimiters.find((delim) => {
     const rxp = getDelimiterRxp(delim);
     return rxp.test(file);
   }) || ',';
@@ -46,9 +46,9 @@ export function isGeoJSON(data) {
   return type === 'FeatureCollection';
 }
 
-export function isTopoJSON() {
-  // @TODO: how to detect topojson files
-  return false;
+export function isTopoJSON(data) {
+  const type = getType(data);
+  return type === 'Topology';
 }
 
 export function geoJSON2JSON(geoJSON) {
@@ -60,7 +60,8 @@ export function geoJSON2JSON(geoJSON) {
 }
 
 export function topoJSON2JSON(topoJSON) {
-  const geoJSON = TopoJSON.feature(topoJSON);
+  const objectName = Object.keys(topoJSON.objects)[0];
+  const geoJSON = TopoJSON.feature(topoJSON, topoJSON.objects[objectName]);
   return geoJSON2JSON(geoJSON);
 }
 

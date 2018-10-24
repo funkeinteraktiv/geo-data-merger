@@ -21,7 +21,7 @@ const mergeDataMapSelector = createSelector(
 export const mergedDataSelector = createSelector(
   [baseDataSelector, baseKeySelector, mergeDataMapSelector],
   (baseData, baseKey, mergeDataMap) => {
-    if (!baseData || !baseKey) {
+    if (!baseData) {
       return [];
     }
 

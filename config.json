@@ -3,5 +3,7 @@
     "description": "webkid react starterkit",
     "viewport": "width=device-width, initial-scale=1",
     "robots": "noindex,nofollow"
-  }
+  },
+  "defaultDelimiters": [",", ";", "\t"],
+  "downloadFormats": ["geojson", "json", "csv", "topojson"]
 }
