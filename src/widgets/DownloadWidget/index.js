@@ -13,10 +13,15 @@ import Button from '~/components/Button';
 
 class DownloadWidget extends Component {
   render() {
-    const { setDownloadFormat, mergedData, downloadFormat } = this.props;
+    const {
+      setDownloadFormat,
+      mergedData,
+      downloadFormat,
+      excludeFields
+    } = this.props;
 
     return (
-      <Widget title="Step 4: Download">
+      <Widget title="Step 5: Download">
         <Flex>
           <Box width={1 / 2} px={2}>
             <Select
@@ -28,7 +33,7 @@ class DownloadWidget extends Component {
           <Box width={1 / 2} px={2}>
             <Button
               disabled={!mergedData || !mergedData.length}
-              onClick={() => downloadFile(mergedData, downloadFormat)}
+              onClick={() => downloadFile(mergedData, downloadFormat, excludeFields)}
             >
               Download
             </Button>
@@ -41,5 +46,6 @@ class DownloadWidget extends Component {
 
 export default connect(state => ({
   mergedData: mergedDataSelector(state),
-  downloadFormat: state.downloadFormat
+  downloadFormat: state.downloadFormat,
+  excludeFields: state.excludeFields
 }), Actions)(DownloadWidget);

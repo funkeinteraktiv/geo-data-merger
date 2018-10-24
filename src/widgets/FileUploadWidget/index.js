@@ -7,6 +7,7 @@ import Actions from '~/state/Actions';
 import FileHandler from '~/components/FileHandler';
 import DataTable from '~/components/DataTable';
 import Widget from '~/components/Widget';
+import Button from '~/components/Button';
 
 class FileUploadWidget extends PureComponent {
   render() {
@@ -27,6 +28,12 @@ class FileUploadWidget extends PureComponent {
           </Box>
           <Box width={1 / 2} px={2}>
             <DataTable data={this.props.mergeData} />
+          </Box>
+        </Flex>
+
+        <Flex>
+          <Box width={1 / 2} px={2}>
+            <Button onClick={this.props.swapData}>Swap Datasets</Button>
           </Box>
         </Flex>
       </Widget>

@@ -3,19 +3,22 @@ import { feature, featureCollection } from '@turf/helpers';
 import { topology } from 'topojson';
 import { csvFormat } from 'd3-dsv';
 
+export function removePropsFromObject(obj, props = []) {
+  return Object.keys(obj).reduce((prev, curr) => {
+    if (props.indexOf(curr) === -1) {
+      prev[curr] = obj[curr]; // eslint-disable-line
+    }
+
+    return prev;
+  }, {});
+}
+
 export function stringifyJSON(data) {
   return JSON.stringify(data);
 }
 
-export function cloneWithoutGeometries(properties) {
-  const props = Object.assign({}, properties);
-  delete props.__id;
-  delete props.__geometry;
-  return props;
-}
-
 export function formatJSON(data) {
-  const res = data.map(cloneWithoutGeometries);
+  const res = data.map(d => removePropsFromObject(d, ['__geometry', '__id']));
   return stringifyJSON(res);
 }
 
@@ -23,7 +26,7 @@ export function JSON2GeoJSON(data) {
   const features = data.map((properties) => {
     const geometry = properties.__geometry;
     const options = { id: properties.__id };
-    const props = cloneWithoutGeometries(properties);
+    const props = removePropsFromObject(properties, ['__geometry', '__id']);
 
     return feature(geometry, props, options);
   });
@@ -43,16 +46,30 @@ export function formatTopoJSON(data) {
 }
 
 export function formatCsv(data) {
-  const res = data.map(cloneWithoutGeometries);
+  const res = data.map(d => removePropsFromObject(d, ['__geometry', '__id']));
   return csvFormat(res);
 }
 
-export function downloadFile(data, filetype) {
+export function cleanData(data, options = {}) {
+  let res = data;
+
+  if (options.excludeFields) {
+    res = res.map(d => removePropsFromObject(d, options.excludeFields));
+  }
+
+  return res;
+}
+
+export function downloadFile(data, filetype, excludeFields = []) {
+  const dataClean = cleanData(data, {
+    excludeFields
+  });
+
   let downloadData = null;
 
   if (filetype === 'geojson') {
     downloadData = {
-      data: formatGeoJSON(data),
+      data: formatGeoJSON(dataClean),
       type: 'text/json;charset=utf-8',
       name: 'output.geojson'
     };
@@ -60,7 +77,7 @@ export function downloadFile(data, filetype) {
 
   if (filetype === 'topojson') {
     downloadData = {
-      data: formatTopoJSON(data),
+      data: formatTopoJSON(dataClean),
       type: 'text/json;charset=utf-8',
       name: 'output.topo.json'
     };
@@ -68,7 +85,7 @@ export function downloadFile(data, filetype) {
 
   if (filetype === 'json') {
     downloadData = {
-      data: formatJSON(data),
+      data: formatJSON(dataClean),
       type: 'text/json;charset=utf-8',
       name: 'output.json'
     };
@@ -76,7 +93,7 @@ export function downloadFile(data, filetype) {
 
   if (filetype === 'csv') {
     downloadData = {
-      data: formatCsv(data),
+      data: formatCsv(dataClean),
       type: 'text/csv;charset=utf-8',
       name: 'output.csv'
     };

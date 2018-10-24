@@ -21,15 +21,15 @@ const mergeDataMapSelector = createSelector(
 export const mergedDataSelector = createSelector(
   [baseDataSelector, baseKeySelector, mergeDataMapSelector],
   (baseData, baseKey, mergeDataMap) => {
-    if (!baseData) {
-      return [];
-    }
+    let res = [];
 
-    const res = baseData.map((d) => {
-      const key = d[baseKey];
-      const addData = mergeDataMap.get(key);
-      return Object.assign({}, d, addData);
-    });
+    if (baseData) {
+      res = baseData.map((d) => {
+        const key = d[baseKey];
+        const addData = mergeDataMap.get(key);
+        return Object.assign({}, d, addData);
+      });
+    }
 
     res.columns = getColumns(res);
 
