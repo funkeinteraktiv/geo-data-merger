@@ -1,46 +1,67 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import Uppy from '@uppy/core';
-import DragDrop from '@uppy/react/lib/DragDrop';
-import styled from 'styled-components';
+import Styled from 'styled-components';
 
-import '@uppy/core/dist/style.css';
-import '@uppy/drag-drop/dist/style.css';
+import {
+  Tab,
+  Tabs,
+  TabList,
+  TabPanel
+} from 'react-tabs';
+import ReactDropzone from 'react-dropzone';
 
 import { parseFile } from '~/utils';
 
-const DragDropWrapper = styled.div`
+import CopyPasteTarget from './CopyPasteTarget';
+
+const TabContainer = Styled(TabList)`
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+
+  > .react-tabs__tab {
+    padding: 5px;
+    background: white;
+    border: 1px solid black;
+    cursor: pointer;
+
+    &:hover, &--selected {
+      background: #ddd;
+    }
+  }
+`;
+
+const Dropzone = Styled(ReactDropzone)`
   width: 100%;
+  height: 200px;
+  border: 3px dashed black;
+  border-radius: 5px;
 `;
 
 class FileHandler extends PureComponent {
   static propTypes = {
-    onChange: PropTypes.func,
-    className: PropTypes.string
+    onChange: PropTypes.func
   }
 
   static defaultProps = {
-    onChange: () => {},
-    className: ''
+    onChange: () => {}
   }
 
-  constructor() {
-    super();
-
-    this.uppy = Uppy({
-      autoProceed: true,
-      allowMultipleUploads: false,
-      restrictions: {
-        allowedFileTypes: ['.csv', '.geojson', '.json', '.topojson']
-      }
-    });
-
-    this.uppy.on('file-added', (data) => {
-      this.readFile(data);
-    });
+  onDrop(acceptedFiles) {
+    this.readFile(acceptedFiles[0]);
   }
 
-  readFile(data) {
+  onPaste(evt) {
+    const content = evt.target.value;
+    const result = parseFile(content);
+
+    if (result) {
+      this.props.onChange(result);
+    }
+  }
+
+  readFile(file) {
     const reader = new FileReader();
 
     reader.onload = () => {
@@ -52,14 +73,34 @@ class FileHandler extends PureComponent {
       }
     };
 
-    reader.readAsText(data.data);
+    reader.readAsText(file);
   }
 
   render() {
     return (
-      <DragDropWrapper className={this.props.className}>
-        <DragDrop uppy={this.uppy} />
-      </DragDropWrapper>
+      <Tabs>
+        <TabContainer>
+          <Tab>Upload</Tab>
+          <Tab>Copy&Paste</Tab>
+        </TabContainer>
+
+        <TabPanel>
+          <Dropzone
+            accept={['.geojson', '.csv', '.json', '.topojson']}
+            onDrop={acceptedFiles => this.onDrop(acceptedFiles)}
+            multiple={false}
+          >
+            Drop Dataset here
+          </Dropzone>
+        </TabPanel>
+
+        <TabPanel>
+          <CopyPasteTarget
+            onChange={evt => this.onPaste(evt)}
+          />
+        </TabPanel>
+
+      </Tabs>
     );
   }
 }
