@@ -2,13 +2,28 @@ import * as D3Dsv from 'd3-dsv';
 import * as TopoJSON from 'topojson-client';
 import { getType } from '@turf/invariant';
 
-const csvParser = D3Dsv.dsvFormat('\t');
+function regexEscape(str) {
+  return str.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&');
+}
+
+function getDelimiterRxp(delim) {
+  const rxp = `^[^\\n\\r]+${regexEscape(delim)}`;
+  return new RegExp(rxp);
+}
+
+export function guessDelimiter(file) {
+  return [',', ';', '\t'].find((delim) => {
+    const rxp = getDelimiterRxp(delim);
+    return rxp.test(file);
+  }) || ',';
+}
 
 export function parseCsv(file) {
   let res = false;
 
   try {
-    res = csvParser.parse(file);
+    const delimiter = guessDelimiter(file);
+    res = D3Dsv.dsvFormat(delimiter).parse(file);
   } catch (e) {
     res = false;
   }

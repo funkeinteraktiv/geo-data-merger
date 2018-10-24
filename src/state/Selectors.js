@@ -11,7 +11,7 @@ const mergeDataMapSelector = createSelector(
   [mergeDataSelector, mergeKeySelector],
   (mergeData, mergeKey) => {
     if (!mergeData || !mergeKey) {
-      return false;
+      return map([], d => d);
     }
 
     return map(mergeData, d => d[mergeKey]);
@@ -21,15 +21,13 @@ const mergeDataMapSelector = createSelector(
 export const mergedDataSelector = createSelector(
   [baseDataSelector, baseKeySelector, mergeDataMapSelector],
   (baseData, baseKey, mergeDataMap) => {
-    if (!baseData || !baseKey || !mergeDataMap) {
+    if (!baseData || !baseKey) {
       return [];
     }
 
     const res = baseData.map((d) => {
       const key = d[baseKey];
-      console.log(key);
       const addData = mergeDataMap.get(key);
-      console.log(addData);
       return Object.assign({}, d, addData);
     });
 
