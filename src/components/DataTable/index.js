@@ -8,7 +8,7 @@ import 'react-table/react-table.css';
 const TableWrapper = Styled.div`
   position: relative;
   margin-top: 20px;
-  background: white;
+  background: transparent;
 
   .ReactTable {
     min-height: 100px;

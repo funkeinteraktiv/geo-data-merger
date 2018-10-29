@@ -15,21 +15,25 @@ class KeySelectWidget extends PureComponent {
     const mergeKeys = idx(mergeData, _ => _.columns) || [];
 
     return (
-      <Widget title="Step 2: Select keys">
+      <Widget step={2} title="Select keys">
         <Flex>
           <Box width={1 / 2} px={2}>
-            <Select
-              options={baseKeys}
-              onChange={this.props.setBaseKey}
-              placeholder="Select key..."
-            />
+            <Flex bg="section" p={3} justifyContent="center">
+              <Select
+                options={baseKeys}
+                onChange={this.props.setBaseKey}
+                placeholder="Select key..."
+              />
+            </Flex>
           </Box>
           <Box width={1 / 2} px={2}>
-            <Select
-              options={mergeKeys}
-              onChange={this.props.setMergeKey}
-              placeholder="Select key..."
-            />
+            <Flex bg="section" p={3} justifyContent="center">
+              <Select
+                options={mergeKeys}
+                onChange={this.props.setMergeKey}
+                placeholder="Select key..."
+              />
+            </Flex>
           </Box>
         </Flex>
       </Widget>

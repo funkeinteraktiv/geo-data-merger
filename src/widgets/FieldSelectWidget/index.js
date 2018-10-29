@@ -11,7 +11,7 @@ class FieldSelectWidget extends PureComponent {
     const { mergedData, excludeFields, toggleExcludeField } = this.props;
 
     return (
-      <Widget title="Step 4: Select Output Fields">
+      <Widget step={4} title="Select Output Fields">
         {mergedData.columns.map(columnName => (
           <div key={`FieldSelect__${columnName}`}>
             <input

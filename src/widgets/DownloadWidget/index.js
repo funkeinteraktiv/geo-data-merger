@@ -21,8 +21,8 @@ class DownloadWidget extends Component {
     } = this.props;
 
     return (
-      <Widget title="Step 5: Download">
-        <Flex>
+      <Widget step={5} title="Download">
+        <Flex bg="section" p={3}>
           <Box width={1 / 2} px={2}>
             <Select
               options={config.downloadFormats}

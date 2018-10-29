@@ -12,7 +12,7 @@ import Button from '~/components/Button';
 class FileUploadWidget extends PureComponent {
   render() {
     return (
-      <Widget title="Step 1: Upload your files">
+      <Widget step={1} title="Upload your files">
         <Flex>
           <Box width={1 / 2} px={2}>
             <FileHandler onChange={this.props.setBaseData} />

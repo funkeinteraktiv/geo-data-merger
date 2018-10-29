@@ -15,5 +15,7 @@ export default createGlobalStyle`
     margin: 0;
     position: relative;
     font-family: 'Ubuntu Mono', monospace;
+    background: ${props => props.theme.colors.background};
+    color: ${props => props.theme.colors.black};
   }
 `;

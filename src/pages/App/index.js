@@ -14,7 +14,8 @@ class App extends PureComponent {
       <Box
         mx="auto"
         css={{
-          maxWidth: '940px'
+          maxWidth: '940px',
+          padding: '0 16px'
         }}
       >
         <Headline />

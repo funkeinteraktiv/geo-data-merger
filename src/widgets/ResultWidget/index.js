@@ -10,7 +10,7 @@ import Widget from '~/components/Widget';
 class ResultWidget extends Component {
   render() {
     return (
-      <Widget title="Step 3: Result">
+      <Widget step={3} title="Result">
         <Box width={1} px={2}>
           <DataTable data={this.props.resultData} />
         </Box>

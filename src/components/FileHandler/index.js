@@ -1,7 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import Styled from 'styled-components';
-
 import {
   Tab,
   Tabs,
@@ -11,7 +10,6 @@ import {
 import ReactDropzone from 'react-dropzone';
 
 import { parseFile } from '~/utils';
-
 import CopyPasteTarget from './CopyPasteTarget';
 
 const TabContainer = Styled(TabList)`
@@ -21,13 +19,12 @@ const TabContainer = Styled(TabList)`
   display: flex;
 
   > .react-tabs__tab {
-    padding: 5px;
-    background: white;
-    border: 1px solid black;
+    padding: 8px 16px;
+    background: transparent;
     cursor: pointer;
 
     &:hover, &--selected {
-      background: #ddd;
+      background: ${props => props.theme.colors.section};
     }
   }
 `;
@@ -35,8 +32,9 @@ const TabContainer = Styled(TabList)`
 const Dropzone = Styled(ReactDropzone)`
   width: 100%;
   height: 200px;
-  border: 3px dashed black;
   border-radius: 5px;
+  background: ${props => props.theme.colors.section};
+  padding: 16px;
 `;
 
 class FileHandler extends PureComponent {
