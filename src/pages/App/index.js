@@ -8,6 +8,7 @@ import ResultWidget from '~/widgets/ResultWidget';
 import FieldSelectWidget from '~/widgets/FieldSelectWidget';
 import DownloadWidget from '~/widgets/DownloadWidget';
 import Footer from '~/components/Footer';
+import Header from '~/components/Header';
 
 const AppWrapper = Styled.div`
   margin: 0 auto;
@@ -19,6 +20,7 @@ class App extends PureComponent {
   render() {
     return (
       <Fragment>
+        <Header />
         <AppWrapper>
           <Headline />
           <FileUploadWidget />
