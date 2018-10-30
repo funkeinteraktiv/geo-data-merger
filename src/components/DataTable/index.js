@@ -11,6 +11,7 @@ const TableWrapper = Styled.div`
 
   .ReactTable {
     min-height: 100px;
+    font-family: ${props => props.theme.fonts.mono};
   }
 `;
 

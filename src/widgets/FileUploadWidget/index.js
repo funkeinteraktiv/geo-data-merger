@@ -11,6 +11,7 @@ import FileSectionWrapper from '~/components/FileSectionWrapper';
 import FileSection from '~/components/FileSection';
 
 const ButtonWrapper = Styled.div`
+  display: ${props => (props.isVisible ? 'block' : 'none')};
   width: 8%;
 
   button {
@@ -41,31 +42,25 @@ class FileUploadWidget extends PureComponent {
           </FileSection>
         </FileSectionWrapper>
 
-        {(hasBaseData && hasMergeData) && (
-          <FileSectionWrapper>
-            <FileSection style={{ textAlign: 'center' }}>
-              File 1 (Base)
-            </FileSection>
-            <ButtonWrapper>
-              <Button onClick={this.props.swapData}>Swap</Button>
-            </ButtonWrapper>
-            <FileSection style={{ textAlign: 'center' }}>
-              File 2
-            </FileSection>
-          </FileSectionWrapper>
-        )}
+        <FileSectionWrapper isVisible={(hasBaseData || hasMergeData)}>
+          <FileSection isVisible={hasBaseData} style={{ textAlign: 'center' }}>
+            File 1 (Base)
+          </FileSection>
+          <ButtonWrapper isVisible={(hasBaseData && hasMergeData)}>
+            <Button onClick={this.props.swapData}>Swap</Button>
+          </ButtonWrapper>
+          <FileSection isVisible={hasMergeData} style={{ textAlign: 'center' }}>
+            File 2
+          </FileSection>
+        </FileSectionWrapper>
 
-        <FileSectionWrapper>
-          {hasBaseData && (
-            <FileSection>
-              <DataTable data={this.props.baseData} />
-            </FileSection>
-          )}
-          {hasMergeData && (
-            <FileSection style={{ marginLeft: 'auto' }}>
-              <DataTable data={this.props.mergeData} />
-            </FileSection>
-          )}
+        <FileSectionWrapper isVisible={(hasBaseData || hasMergeData)}>
+          <FileSection isVisible={hasBaseData}>
+            <DataTable data={this.props.baseData} />
+          </FileSection>
+          <FileSection isVisible={hasMergeData} style={{ marginLeft: 'auto' }}>
+            <DataTable data={this.props.mergeData} />
+          </FileSection>
         </FileSectionWrapper>
       </Widget>
     );

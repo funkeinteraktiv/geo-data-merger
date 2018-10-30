@@ -7,7 +7,7 @@ const Widget = Styled.div`
   border-top: 3px solid ${props => props.theme.colors.black};
 `;
 
-const WidgetTitle = Styled.div`
+const WidgetTitleWrapper = Styled.div`
   display: flex;
   align-items: center;
   margin-bottom: 10px;
@@ -28,19 +28,22 @@ const Step = Styled.div`
 
 const Title = Styled.h2`
   margin: 0;
+  font-size: 20px;
 `;
 
 const Subtitle = Styled.div`
   margin: 0 0 16px 0;
   color: ${props => props.theme.colors.darkgray};
+  font-family: ${props => props.theme.fonts.mono};
+  font-size: 14px;
 `;
 
-export default ({ title, subtitle, step, children }) => (
+export default ({title, subtitle, step, children }) => (
   <Widget>
-    <WidgetTitle>
+    <WidgetTitleWrapper>
       <Step>{step + 1}</Step>
       <Title>{title}</Title>
-    </WidgetTitle>
+    </WidgetTitleWrapper>
     <Subtitle>{subtitle}</Subtitle>
     {children}
   </Widget>

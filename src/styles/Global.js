@@ -2,7 +2,7 @@ import styledNormalize from 'styled-normalize';
 import { createGlobalStyle } from 'styled-components';
 
 export default createGlobalStyle`
-  @import url('https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700');
+  @import url('https://fonts.googleapis.com/css?family=Roboto+Mono|Roboto:400,700');
 
   ${styledNormalize}
 
@@ -14,7 +14,7 @@ export default createGlobalStyle`
     padding: 0;
     margin: 0;
     position: relative;
-    font-family: 'Ubuntu Mono', monospace;
+    font-family: 'Roboto', sans-serif;
     background: ${props => props.theme.colors.background};
     color: ${props => props.theme.colors.black};
   }
