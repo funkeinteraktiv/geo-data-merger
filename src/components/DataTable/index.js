@@ -43,8 +43,6 @@ class DataTable extends PureComponent {
   render() {
     const { data } = this.props;
 
-    console.log(data);
-
     data.columns = data.columns || [];
 
     const columns = data.columns.filter(col => col.indexOf('__' !== 0)).map(col => ({
