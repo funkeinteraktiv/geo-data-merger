@@ -49,7 +49,7 @@ class DownloadWidget extends Component {
             <Button
               disabled={!mergedData || !mergedData.length}
               onClick={() => downloadFile(mergedData, downloadFormat, excludeFields)}
-              style={{ marginLeft: '20px' }}
+              style={{ marginLeft: '20px', width: '200px' }}
             >
               Download
             </Button>

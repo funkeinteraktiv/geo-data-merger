@@ -2,7 +2,17 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-const StyledSelect = styled.select``;
+const StyledSelect = styled.select`
+  cursor: pointer;
+  width: 200px;
+  padding: 0 .571em;
+  font-size: 14px;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-bottom-color: #a3a3a3;
+  border-radius: 4px;
+  height: 35px;
+`;
 
 class Select extends Component {
   static propTypes = {

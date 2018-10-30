@@ -4,7 +4,7 @@ import Styled from 'styled-components';
 const Widget = Styled.div`
   margin: 32px 0 16px 0;
   padding: 15px 0;
-  border-top: 3px solid ${props => props.theme.colors.black};
+  border-top: 3px solid ${props => props.theme.colors.darkBackground};
 `;
 
 const WidgetTitleWrapper = Styled.div`
