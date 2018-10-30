@@ -23,7 +23,7 @@ const step = 0;
 
 class FileUploadWidget extends PureComponent {
   render() {
-    const { baseData, mergeData } = this.props;
+    const { baseData, baseFileName, mergeData, mergeFileName } = this.props;
     const hasBaseData = !!baseData.length;
     const hasMergeData = !!mergeData.length;
 
@@ -35,10 +35,10 @@ class FileUploadWidget extends PureComponent {
       >
         <FileSectionWrapper>
           <FileSection>
-            <FileHandler onChange={this.props.setBaseData} />
+            <FileHandler onChange={this.props.setBaseData} fileName={baseFileName} />
           </FileSection>
           <FileSection>
-            <FileHandler onChange={this.props.setMergeData} />
+            <FileHandler onChange={this.props.setMergeData} fileName={mergeFileName} />
           </FileSection>
         </FileSectionWrapper>
 
@@ -69,5 +69,7 @@ class FileUploadWidget extends PureComponent {
 
 export default connect(state => ({
   baseData: state.baseData,
-  mergeData: state.mergeData
+  baseFileName: state.baseFileName,
+  mergeData: state.mergeData,
+  mergeFileName: state.mergeFileName
 }), Actions)(FileUploadWidget);

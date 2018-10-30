@@ -9,6 +9,7 @@ import {
 } from 'react-tabs';
 import ReactDropzone from 'react-dropzone';
 
+import FileIcon from '../../../public/images/file.svg';
 import { parseFile } from '~/utils';
 import CopyPasteTarget from './CopyPasteTarget';
 
@@ -36,6 +37,26 @@ const Dropzone = Styled(ReactDropzone)`
   border-radius: 5px;
   background: ${props => props.theme.colors.section};
   padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+`;
+
+const FileWrapper = Styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  svg {
+    width: 48px;
+    height: 48px;
+  }
+`;
+
+const FileName = Styled.div`
+  font-size: 14px;
+  margin-top: 10px;
 `;
 
 class FileHandler extends PureComponent {
@@ -56,7 +77,11 @@ class FileHandler extends PureComponent {
     const result = parseFile(content);
 
     if (result) {
-      this.props.onChange(result);
+      this.props.onChange({
+        data: result,
+        fileName: '',
+        type: 'copy-paste'
+      });
     }
   }
 
@@ -68,11 +93,28 @@ class FileHandler extends PureComponent {
       const result = parseFile(content);
 
       if (result) {
-        this.props.onChange(result);
+        this.props.onChange({
+          data: result,
+          fileName: file.name,
+          type: file.type
+        });
       }
     };
 
     reader.readAsText(file);
+  }
+
+  renderFile() {
+    if (!this.props.fileName) {
+      return 'Drop data set here';
+    }
+
+    return (
+      <FileWrapper>
+        <FileIcon />
+        <FileName>{this.props.fileName}</FileName>
+      </FileWrapper>
+    );
   }
 
   render() {
@@ -89,7 +131,7 @@ class FileHandler extends PureComponent {
             onDrop={acceptedFiles => this.onDrop(acceptedFiles)}
             multiple={false}
           >
-            Drop Dataset here
+            {this.renderFile() }
           </Dropzone>
         </TabPanel>
 

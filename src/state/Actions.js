@@ -1,10 +1,20 @@
 /* eslint-disable */
-const setBaseData = (state, data) => {
-  return { baseData: data, baseKey: data.columns[0] };
+const setBaseData = (state, fileData) => {
+  return {
+    baseData: fileData.data,
+    baseKey: fileData.data.columns[0],
+    baseFileName: fileData.fileName,
+    baseFileType: fileData.type
+  };
 }
 
-const setMergeData = (state, data) => {
-  return { mergeData: data, mergeKey: data.columns[0] };
+const setMergeData = (state, fileData) => {
+  return {
+    mergeData: fileData.data,
+    mergeKey: fileData.data.columns[0],
+    mergeFileName: fileData.fileName,
+    mergeFileType: fileData.type
+  };
 }
 
 const setBaseKey = (state, key) => {
@@ -33,7 +43,7 @@ const toggleExcludeField = (state, fieldName) => {
     return { excludeFields: state.excludeFields.concat([fieldName]) };
   }
   return { excludeFields: state.excludeFields.filter((d, i) => i !== index) }
-} 
+}
 
 export default Store => ({
   setBaseData,
