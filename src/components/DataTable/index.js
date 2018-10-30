@@ -13,6 +13,14 @@ const TableWrapper = Styled.div`
     min-height: 100px;
     font-family: ${props => props.theme.fonts.mono};
   }
+
+  .ReactTable .rt-thead .rt-th, .ReactTable .rt-thead .rt-td,
+  .ReactTable .rt-thead.-header {
+    box-shadow: none;
+    border-bottom: 1px solid #eee;
+    font-family: ${props => props.theme.fonts.sans};
+    font-weight: 700;
+  }
 `;
 
 class DataTable extends PureComponent {

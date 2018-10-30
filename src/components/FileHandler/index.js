@@ -50,6 +50,9 @@ const FileWrapper = Styled.div`
   background: white;
   padding: 16px;
   width: 200px;
+  border: 1px solid #ccc;
+  border-bottom-color: #a3a3a3;
+  border-radius: 4px;
 
   svg {
     width: 48px;
