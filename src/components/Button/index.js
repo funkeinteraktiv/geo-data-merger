@@ -6,6 +6,9 @@ export default Styled.button`
   font-weight: 700;
   border: none;
   cursor: pointer;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  border-bottom-color: #a3a3a3;
 
   &:hover {
     opacity: 0.9;
