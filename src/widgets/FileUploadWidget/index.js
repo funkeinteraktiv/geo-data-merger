@@ -2,11 +2,12 @@ import React, { PureComponent } from 'react';
 import { connect } from 'unistore/react';
 import Styled from 'styled-components';
 
+import SwapIcon from '../../../public/images/swap.svg';
 import Actions from '~/state/Actions';
 import FileHandler from '~/components/FileHandler';
 import DataTable from '~/components/DataTable';
 import Widget from '~/components/Widget';
-import Button from '~/components/Button';
+import ButtonLight from '~/components/ButtonLight';
 import FileSectionWrapper from '~/components/FileSectionWrapper';
 import FileSection from '~/components/FileSection';
 
@@ -47,7 +48,9 @@ class FileUploadWidget extends PureComponent {
             File 1 (Base)
           </FileSection>
           <ButtonWrapper isVisible={(hasBaseData && hasMergeData)}>
-            <Button onClick={this.props.swapData}>Swap</Button>
+            <ButtonLight onClick={this.props.swapData}>
+              <SwapIcon style={{ width: '16px', height: '16px' }} />
+            </ButtonLight>
           </ButtonWrapper>
           <FileSection isVisible={hasMergeData} style={{ textAlign: 'center' }}>
             File 2
