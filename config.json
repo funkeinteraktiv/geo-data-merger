@@ -5,5 +5,12 @@
     "robots": "noindex,nofollow"
   },
   "defaultDelimiters": [",", ";", "\t"],
-  "downloadFormats": ["geojson", "json", "csv", "topojson"]
+  "downloadFormats": ["geojson", "json", "csv", "topojson"],
+  "sections": [
+    { "title": "Upload your Files", "subtitle": "Please upload or paste two files (.json, .csv, .geojson, .topojson) in order to merge them." },
+    { "title": "Select Keys", "subtitle": "Choose the keys for merging the data." },
+    { "title": "Result", "subtitle": "Check out the result to see if everything worked as expected." },
+    { "title": "Select Output Fields", "subtitle": "Choose which data should be included in your final result." },
+    { "title": "Download", "subtitle": "Download the merged data as csv, json or geojson." }
+  ]
 }

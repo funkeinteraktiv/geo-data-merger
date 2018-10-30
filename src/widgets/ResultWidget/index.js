@@ -6,10 +6,16 @@ import { mergedDataSelector } from '~/state/Selectors';
 import DataTable from '~/components/DataTable';
 import Widget from '~/components/Widget';
 
+const step = 2;
+
 class ResultWidget extends Component {
   render() {
     return (
-      <Widget step={3} title="Result">
+      <Widget
+        step={step}
+        title={config.sections[step].title}
+        subtitle={config.sections[step].subtitle}
+      >
         <DataTable data={this.props.resultData} />
       </Widget>
     );

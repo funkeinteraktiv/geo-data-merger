@@ -17,6 +17,8 @@ const SelectWrapper = Styled.div`
   padding: 16px;
 `;
 
+const step = 1;
+
 class KeySelectWidget extends PureComponent {
   render() {
     const { baseData, mergeData } = this.props;
@@ -24,7 +26,11 @@ class KeySelectWidget extends PureComponent {
     const mergeKeys = idx(mergeData, _ => _.columns) || [];
 
     return (
-      <Widget step={2} title="Select keys">
+      <Widget
+        step={step}
+        title={config.sections[step].title}
+        subtitle={config.sections[step].subtitle}
+      >
         <FileSectionWrapper>
           <FileSection>
             <SelectWrapper>

@@ -3,7 +3,6 @@ import { connect } from 'unistore/react';
 import Styled from 'styled-components';
 
 import Actions from '~/state/Actions';
-
 import FileHandler from '~/components/FileHandler';
 import DataTable from '~/components/DataTable';
 import Widget from '~/components/Widget';
@@ -19,10 +18,19 @@ const ButtonWrapper = Styled.div`
   }
 `;
 
+const step = 0;
+
 class FileUploadWidget extends PureComponent {
   render() {
+    const { baseData, mergeData } = this.props;
+    const hasData = !!(baseData.length && mergeData.length);
+
     return (
-      <Widget step={1} title="Upload your files">
+      <Widget
+        step={step}
+        title={config.sections[step].title}
+        subtitle={config.sections[step].subtitle}
+      >
         <FileSectionWrapper>
           <FileSection>
             <FileHandler onChange={this.props.setBaseData} />
@@ -32,27 +40,30 @@ class FileUploadWidget extends PureComponent {
           </FileSection>
         </FileSectionWrapper>
 
-        <FileSectionWrapper>
-          <FileSection style={{ textAlign: 'center' }}>
-            File 1 (Base)
-          </FileSection>
-          <ButtonWrapper>
-            <Button onClick={this.props.swapData}>Swap</Button>
-          </ButtonWrapper>
-          <FileSection style={{ textAlign: 'center' }}>
-            File 2
-          </FileSection>
-        </FileSectionWrapper>
+        {hasData && (
+          <FileSectionWrapper>
+            <FileSection style={{ textAlign: 'center' }}>
+              File 1 (Base)
+            </FileSection>
+            <ButtonWrapper>
+              <Button onClick={this.props.swapData}>Swap</Button>
+            </ButtonWrapper>
+            <FileSection style={{ textAlign: 'center' }}>
+              File 2
+            </FileSection>
+          </FileSectionWrapper>
+        )}
 
-        <FileSectionWrapper>
-          <FileSection>
-            <DataTable data={this.props.baseData} />
-          </FileSection>
-          <FileSection>
-            <DataTable data={this.props.mergeData} />
-          </FileSection>
-        </FileSectionWrapper>
-
+        {hasData && (
+          <FileSectionWrapper>
+            <FileSection>
+              <DataTable data={this.props.baseData} />
+            </FileSection>
+            <FileSection>
+              <DataTable data={this.props.mergeData} />
+            </FileSection>
+          </FileSectionWrapper>
+        )}
       </Widget>
     );
   }

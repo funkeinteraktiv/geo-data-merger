@@ -30,12 +30,18 @@ const Title = Styled.h2`
   margin: 0;
 `;
 
-export default ({ title, step, children }) => (
+const Subtitle = Styled.div`
+  margin: 0 0 16px 0;
+  color: ${props => props.theme.colors.darkgray};
+`;
+
+export default ({ title, subtitle, step, children }) => (
   <Widget>
     <WidgetTitle>
-      <Step>{step}</Step>
+      <Step>{step + 1}</Step>
       <Title>{title}</Title>
     </WidgetTitle>
+    <Subtitle>{subtitle}</Subtitle>
     {children}
   </Widget>
 );

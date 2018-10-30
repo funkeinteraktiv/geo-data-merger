@@ -22,6 +22,8 @@ const DownloadInteraction = Styled.div`
   display: flex;
 `;
 
+const step = 4;
+
 class DownloadWidget extends Component {
   render() {
     const {
@@ -32,7 +34,11 @@ class DownloadWidget extends Component {
     } = this.props;
 
     return (
-      <Widget step={5} title="Download">
+      <Widget
+        step={step}
+        title={config.sections[step].title}
+        subtitle={config.sections[step].subtitle}
+      >
         <DownloadWrapper>
           <DownloadInteraction>
             <Select
