@@ -10,7 +10,7 @@ const Bold = Styled.span`
   font-weight: 700;
 `;
 
-const Subtitle = Styled.p`
+const Subtitle = Styled.div`
   margin: 10px 0 20px 0;
   font-family: ${props => props.theme.fonts.mono};
 `;

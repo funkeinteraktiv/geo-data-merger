@@ -8,11 +8,13 @@ const Textarea = Styled.textarea`
   border: 1px solid #eee;
   resize: vertical;
   min-height: 150px;
+  height: 100%;
 `;
 
 const CopyPasteWrapper = Styled.div`
   background: ${props => props.theme.colors.section};
   padding: 16px;
+  height: 200px;
 `;
 
 class CopyPasteTarget extends PureComponent {

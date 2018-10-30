@@ -112,7 +112,7 @@ class FileHandler extends PureComponent {
 
   renderFile() {
     if (!this.props.fileName) {
-      return 'Drop data set here';
+      return 'Drop file here';
     }
 
     return (

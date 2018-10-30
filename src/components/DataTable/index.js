@@ -10,8 +10,8 @@ const TableWrapper = Styled.div`
   background: transparent;
 
   .ReactTable {
-    min-height: 100px;
     font-family: ${props => props.theme.fonts.mono};
+    height: 200px;
   }
 
   .ReactTable .rt-thead .rt-th, .ReactTable .rt-thead .rt-td,
@@ -19,6 +19,14 @@ const TableWrapper = Styled.div`
     box-shadow: none;
     border-bottom: 1px solid #eee;
     font-family: ${props => props.theme.fonts.sans};
+    font-weight: 700;
+  }
+
+  .ReactTable .rt-noData {
+    font-family: ${props => props.theme.fonts.sans};
+    text-align: center;
+    color: ${props => props.theme.colors.black};
+    background: transparent;
     font-weight: 700;
   }
 `;
@@ -35,6 +43,8 @@ class DataTable extends PureComponent {
   render() {
     const { data } = this.props;
 
+    console.log(data);
+
     data.columns = data.columns || [];
 
     const columns = data.columns.filter(col => col.indexOf('__' !== 0)).map(col => ({
@@ -50,7 +60,8 @@ class DataTable extends PureComponent {
           columns={columns}
           showPagination={false}
           sortable={false}
-          defaultPageSize={5}
+          minRows={0}
+          noDataText="↑ Please upload a file to see the result."
         />
       </TableWrapper>
     );
