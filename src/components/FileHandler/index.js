@@ -47,6 +47,9 @@ const FileWrapper = Styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  background: white;
+  padding: 16px;
+  width: 200px;
 
   svg {
     width: 48px;
