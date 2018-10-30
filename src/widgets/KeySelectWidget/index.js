@@ -38,6 +38,7 @@ class KeySelectWidget extends PureComponent {
                 options={baseKeys}
                 onChange={this.props.setBaseKey}
                 placeholder="Select key..."
+                disabled={baseData.length === 0}
               />
             </SelectWrapper>
           </FileSection>
@@ -47,6 +48,7 @@ class KeySelectWidget extends PureComponent {
                 options={mergeKeys}
                 onChange={this.props.setMergeKey}
                 placeholder="Select key..."
+                disabled={mergeData.length === 0}
               />
             </SelectWrapper>
           </FileSection>

@@ -27,6 +27,8 @@ const step = 4;
 class DownloadWidget extends Component {
   render() {
     const {
+      baseData,
+      mergeData,
       setDownloadFormat,
       mergedData,
       downloadFormat,
@@ -45,6 +47,7 @@ class DownloadWidget extends Component {
               options={config.downloadFormats}
               placeholder="Select download format..."
               onChange={setDownloadFormat}
+              disabled={(baseData.length === 0 && mergeData.length === 0)}
             />
             <Button
               disabled={!mergedData || !mergedData.length}
@@ -61,6 +64,8 @@ class DownloadWidget extends Component {
 }
 
 export default connect(state => ({
+  baseData: state.baseData,
+  mergeData: state.mergeData,
   mergedData: mergedDataSelector(state),
   downloadFormat: state.downloadFormat,
   excludeFields: state.excludeFields

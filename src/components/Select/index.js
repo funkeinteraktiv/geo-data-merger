@@ -12,6 +12,11 @@ const StyledSelect = styled.select`
   border-bottom-color: #a3a3a3;
   border-radius: 4px;
   height: 35px;
+
+  &:disabled {
+    background: #eee;
+    color: #777;
+  }
 `;
 
 class Select extends Component {
@@ -33,7 +38,11 @@ class Select extends Component {
 
   render() {
     return (
-      <StyledSelect defaultValue="default" onChange={evt => this.onChange(evt)}>
+      <StyledSelect
+        defaultValue="default"
+        onChange={evt => this.onChange(evt)}
+        disabled={this.props.disabled}
+      >
         {this.props.options.length === 0 && <option value="default" disabled>{this.props.placeholder}</option>}
         {this.props.options.map(opt => (
           <option value={opt} key={`Select__Option__${opt}`}>{opt}</option>
