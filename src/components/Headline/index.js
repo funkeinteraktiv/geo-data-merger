@@ -1,11 +1,17 @@
-import React from 'react';
-import { Flex, Box } from '@rebass/grid';
+import React, { Fragment } from 'react';
+import Styled from 'styled-components';
+
+const Title = Styled.h1`
+  margin: 0;
+`;
+
+const Subtitle = Styled.p`
+  margin: 10px 0 20px 0;
+`;
 
 export default () => (
-  <Flex>
-    <Box width={1} px={2}>
-      <h1>(Geo)DataMerger</h1>
-      <p>A small tool for merging different Datasets together.</p>
-    </Box>
-  </Flex>
+  <Fragment>
+    <Title>(Geo)DataMerger</Title>
+    <Subtitle>A small tool for merging different Datasets together.</Subtitle>
+  </Fragment>
 );

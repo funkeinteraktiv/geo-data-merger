@@ -7,7 +7,6 @@ import 'react-table/react-table.css';
 
 const TableWrapper = Styled.div`
   position: relative;
-  margin-top: 20px;
   background: transparent;
 
   .ReactTable {

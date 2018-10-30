@@ -1,11 +1,16 @@
 import React from 'react';
 import Styled from 'styled-components';
-import { Flex } from '@rebass/grid';
 
 const Widget = Styled.div`
   margin: 15px 0;
   padding: 15px 0;
   border-top: 3px solid ${props => props.theme.colors.black};
+`;
+
+const WidgetTitle = Styled.div`
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
 `;
 
 const Step = Styled.div`
@@ -27,10 +32,10 @@ const Title = Styled.h2`
 
 export default ({ title, step, children }) => (
   <Widget>
-    <Flex alignItems="center" mb={3}>
+    <WidgetTitle>
       <Step>{step}</Step>
       <Title>{title}</Title>
-    </Flex>
+    </WidgetTitle>
     {children}
   </Widget>
 );

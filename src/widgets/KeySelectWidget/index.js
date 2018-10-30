@@ -1,12 +1,21 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'unistore/react';
-import { Flex, Box } from '@rebass/grid';
 import idx from 'idx';
+import Styled from 'styled-components';
 
 import Actions from '~/state/Actions';
 
 import Select from '~/components/Select';
 import Widget from '~/components/Widget';
+import FileSectionWrapper from '~/components/FileSectionWrapper';
+import FileSection from '~/components/FileSection';
+
+const SelectWrapper = Styled.div`
+  display: flex;
+  justify-content: center;
+  background: ${props => props.theme.colors.section};
+  padding: 16px;
+`;
 
 class KeySelectWidget extends PureComponent {
   render() {
@@ -16,26 +25,26 @@ class KeySelectWidget extends PureComponent {
 
     return (
       <Widget step={2} title="Select keys">
-        <Flex>
-          <Box width={1 / 2} px={2}>
-            <Flex bg="section" p={3} justifyContent="center">
+        <FileSectionWrapper>
+          <FileSection>
+            <SelectWrapper>
               <Select
                 options={baseKeys}
                 onChange={this.props.setBaseKey}
                 placeholder="Select key..."
               />
-            </Flex>
-          </Box>
-          <Box width={1 / 2} px={2}>
-            <Flex bg="section" p={3} justifyContent="center">
+            </SelectWrapper>
+          </FileSection>
+          <FileSection>
+            <SelectWrapper>
               <Select
                 options={mergeKeys}
                 onChange={this.props.setMergeKey}
                 placeholder="Select key..."
               />
-            </Flex>
-          </Box>
-        </Flex>
+            </SelectWrapper>
+          </FileSection>
+        </FileSectionWrapper>
       </Widget>
     );
   }

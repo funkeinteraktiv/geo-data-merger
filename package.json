@@ -52,7 +52,6 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.0.0",
-    "@rebass/grid": "^6.0.0-4",
     "@turf/helpers": "^6.1.4",
     "@turf/invariant": "^6.1.2",
     "@uppy/core": "^0.27.3",

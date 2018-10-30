@@ -5,4 +5,9 @@ export default Styled.button`
   padding: 8px 16px;
   font-weight: 700;
   border: none;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.9;
+  }
 `;

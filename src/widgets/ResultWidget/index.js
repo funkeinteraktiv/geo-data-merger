@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'unistore/react';
-import { Box } from '@rebass/grid';
 
 import { mergedDataSelector } from '~/state/Selectors';
 
@@ -11,9 +10,7 @@ class ResultWidget extends Component {
   render() {
     return (
       <Widget step={3} title="Result">
-        <Box width={1} px={2}>
-          <DataTable data={this.props.resultData} />
-        </Box>
+        <DataTable data={this.props.resultData} />
       </Widget>
     );
   }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Flex, Box } from '@rebass/grid';
+import Styled from 'styled-components';
 import { connect } from 'unistore/react';
 
 import { mergedDataSelector } from '~/state/Selectors';
@@ -10,6 +10,17 @@ import Actions from '~/state/Actions';
 import Widget from '~/components/Widget';
 import Select from '~/components/Select';
 import Button from '~/components/Button';
+
+const DownloadWrapper = Styled.div`
+  display: flex;
+  justify-content: center;
+  padding: 16px;
+  background: ${props => props.theme.colors.section};
+`;
+
+const DownloadInteraction = Styled.div`
+  display: flex;
+`;
 
 class DownloadWidget extends Component {
   render() {
@@ -22,23 +33,22 @@ class DownloadWidget extends Component {
 
     return (
       <Widget step={5} title="Download">
-        <Flex bg="section" p={3}>
-          <Box width={1 / 2} px={2}>
+        <DownloadWrapper>
+          <DownloadInteraction>
             <Select
               options={config.downloadFormats}
               placeholder="Select download format..."
               onChange={setDownloadFormat}
             />
-          </Box>
-          <Box width={1 / 2} px={2}>
             <Button
               disabled={!mergedData || !mergedData.length}
               onClick={() => downloadFile(mergedData, downloadFormat, excludeFields)}
+              style={{ marginLeft: '20px' }}
             >
               Download
             </Button>
-          </Box>
-        </Flex>
+          </DownloadInteraction>
+        </DownloadWrapper>
       </Widget>
     );
   }
