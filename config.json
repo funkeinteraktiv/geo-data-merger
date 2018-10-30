@@ -6,7 +6,7 @@
     "robots": "noindex, nofollow"
   },
   "defaultDelimiters": [",", ";", "\t"],
-  "downloadFormats": ["geojson", "json", "csv", "topojson"],
+  "downloadFormats": ["csv", "json", "geojson", "topojson"],
   "sections": [
     { "title": "Upload your Files", "subtitle": "Please upload or paste two files (json, csv, geojson, topojson) in order to merge them." },
     { "title": "Select Keys", "subtitle": "Choose the keys for merging the data." },
