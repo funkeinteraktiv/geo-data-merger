@@ -12,6 +12,7 @@ const CheckboxWrapper = Styled.div`
   background: ${props => props.theme.colors.section};
   padding: 16px;
   display: flex;
+  flex-wrap: wrap;
 `;
 
 const Checkbox = Styled.div`
