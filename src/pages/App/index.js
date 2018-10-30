@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { PureComponent, Fragment } from 'react';
 import Styled from 'styled-components';
 
 import Headline from '~/components/Headline';
@@ -7,6 +7,7 @@ import KeySelectWidget from '~/widgets/KeySelectWidget';
 import ResultWidget from '~/widgets/ResultWidget';
 import FieldSelectWidget from '~/widgets/FieldSelectWidget';
 import DownloadWidget from '~/widgets/DownloadWidget';
+import Footer from '~/components/Footer';
 
 const AppWrapper = Styled.div`
   margin: 0 auto;
@@ -17,14 +18,17 @@ const AppWrapper = Styled.div`
 class App extends PureComponent {
   render() {
     return (
-      <AppWrapper>
-        <Headline />
-        <FileUploadWidget />
-        <KeySelectWidget />
-        <ResultWidget />
-        <FieldSelectWidget />
-        <DownloadWidget />
-      </AppWrapper>
+      <Fragment>
+        <AppWrapper>
+          <Headline />
+          <FileUploadWidget />
+          <KeySelectWidget />
+          <ResultWidget />
+          <FieldSelectWidget />
+          <DownloadWidget />
+        </AppWrapper>
+        <Footer />
+      </Fragment>
     );
   }
 }
