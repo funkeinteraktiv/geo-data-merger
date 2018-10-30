@@ -22,6 +22,7 @@ const TabContainer = Styled(TabList)`
     padding: 8px 16px;
     background: transparent;
     cursor: pointer;
+    font-weight: 700;
 
     &:hover, &--selected {
       background: ${props => props.theme.colors.section};
@@ -78,8 +79,8 @@ class FileHandler extends PureComponent {
     return (
       <Tabs>
         <TabContainer>
-          <Tab>Upload</Tab>
-          <Tab>Copy&Paste</Tab>
+          <Tab>Upload File</Tab>
+          <Tab>Copy & Paste</Tab>
         </TabContainer>
 
         <TabPanel>

@@ -23,7 +23,8 @@ const step = 0;
 class FileUploadWidget extends PureComponent {
   render() {
     const { baseData, mergeData } = this.props;
-    const hasData = !!(baseData.length && mergeData.length);
+    const hasBaseData = !!baseData.length;
+    const hasMergeData = !!mergeData.length;
 
     return (
       <Widget
@@ -40,7 +41,7 @@ class FileUploadWidget extends PureComponent {
           </FileSection>
         </FileSectionWrapper>
 
-        {hasData && (
+        {(hasBaseData && hasMergeData) && (
           <FileSectionWrapper>
             <FileSection style={{ textAlign: 'center' }}>
               File 1 (Base)
@@ -54,16 +55,18 @@ class FileUploadWidget extends PureComponent {
           </FileSectionWrapper>
         )}
 
-        {hasData && (
-          <FileSectionWrapper>
+        <FileSectionWrapper>
+          {hasBaseData && (
             <FileSection>
               <DataTable data={this.props.baseData} />
             </FileSection>
-            <FileSection>
+          )}
+          {hasMergeData && (
+            <FileSection style={{ marginLeft: 'auto' }}>
               <DataTable data={this.props.mergeData} />
             </FileSection>
-          </FileSectionWrapper>
-        )}
+          )}
+        </FileSectionWrapper>
       </Widget>
     );
   }
