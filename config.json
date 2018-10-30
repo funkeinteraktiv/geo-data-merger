@@ -1,8 +1,9 @@
 {
   "meta": {
-    "description": "webkid react starterkit",
+    "title": "Geo Data Merger",
+    "description": "A data merger for json, csv, geojson and topojson files.",
     "viewport": "width=device-width, initial-scale=1",
-    "robots": "noindex,nofollow"
+    "robots": "noindex, nofollow"
   },
   "defaultDelimiters": [",", ";", "\t"],
   "downloadFormats": ["geojson", "json", "csv", "topojson"],
