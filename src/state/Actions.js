@@ -1,19 +1,21 @@
 /* eslint-disable */
 const setBaseData = (state, fileData) => {
+  const isDelete = fileData === null;
   return {
-    baseData: fileData.data,
-    baseKey: fileData.data.columns[0],
-    baseFileName: fileData.fileName,
-    baseFileType: fileData.type
+    baseData: isDelete ? [] : fileData.data,
+    baseKey: isDelete ? '' : fileData.data.columns[0],
+    baseFileName: isDelete ? '' : fileData.fileName,
+    baseFileType: isDelete ? '' : fileData.type
   };
 }
 
 const setMergeData = (state, fileData) => {
+  const isDelete = fileData === null;
   return {
-    mergeData: fileData.data,
-    mergeKey: fileData.data.columns[0],
-    mergeFileName: fileData.fileName,
-    mergeFileType: fileData.type
+    mergeData: isDelete ? [] :fileData.data,
+    mergeKey: isDelete ? '' : fileData.data.columns[0],
+    mergeFileName: isDelete ? '' : fileData.fileName,
+    mergeFileType: isDelete ? '' : fileData.type
   };
 }
 

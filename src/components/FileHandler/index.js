@@ -9,7 +9,9 @@ import {
 } from 'react-tabs';
 import ReactDropzone from 'react-dropzone';
 
-import FileIcon from '../../../public/images/file.svg';
+import FileIcon from 'react-feather/dist/icons/file';
+import CloseIcon from 'react-feather/dist/icons/x';
+
 import { parseFile } from '~/utils';
 import CopyPasteTarget from './CopyPasteTarget';
 
@@ -58,10 +60,23 @@ const FileWrapper = Styled.div`
   border: 1px solid #ccc;
   border-bottom-color: #a3a3a3;
   border-radius: 4px;
+  position: relative;
+`;
 
-  svg {
-    width: 48px;
-    height: 48px;
+const CloseIconWrapper = Styled.div`
+  position: absolute;
+  right: -10px;
+  top: -10px;
+  background: ${props => props.theme.colors.interaction};
+  border-radius: 50%;
+  padding: 5px;
+  display: flex;
+  jusitfy-content: center;
+  align-items: center;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.8;
   }
 `;
 
@@ -102,6 +117,11 @@ class FileHandler extends PureComponent {
     }
   }
 
+  onDeleteFile(evt) {
+    evt.preventDefault();
+    this.props.onChange(null);
+  }
+
   readFile(file) {
     const reader = new FileReader();
 
@@ -128,7 +148,10 @@ class FileHandler extends PureComponent {
 
     return (
       <FileWrapper>
-        <FileIcon />
+        <CloseIconWrapper onClick={evt => this.onDeleteFile(evt)}>
+          <CloseIcon size={20} />
+        </CloseIconWrapper>
+        <FileIcon size={48} />
         <FileName>{this.props.fileName}</FileName>
       </FileWrapper>
     );
@@ -141,17 +164,15 @@ class FileHandler extends PureComponent {
           <Tab>Upload File</Tab>
           <Tab>Copy & Paste</Tab>
         </TabContainer>
-
         <TabPanel>
           <Dropzone
             accept={['.geojson', '.csv', '.json', '.topojson']}
             onDrop={acceptedFiles => this.onDrop(acceptedFiles)}
             multiple={false}
           >
-            {this.renderFile() }
+            {this.renderFile()}
           </Dropzone>
         </TabPanel>
-
         <TabPanel>
           <CopyPasteTarget
             onChange={evt => this.onPaste(evt)}
