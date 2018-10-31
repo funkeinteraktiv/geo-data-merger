@@ -57,6 +57,7 @@ class DataTable extends PureComponent {
     return (
       <TableWrapper>
         <ReactTable
+          className="-striped"
           data={data}
           columns={columns}
           showPagination={false}
