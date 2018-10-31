@@ -36,23 +36,34 @@ class FileUploadWidget extends PureComponent {
       >
         <FileSectionWrapper>
           <FileSection>
-            <FileHandler onChange={this.props.setBaseData} fileName={baseFileName} />
+            <FileHandler
+              onChange={this.props.setBaseData}
+              fileName={baseFileName}
+              dropText="Drop base file here"
+              textareaPlaceholder="Paste base data here ..."
+            />
           </FileSection>
           <FileSection>
-            <FileHandler onChange={this.props.setMergeData} fileName={mergeFileName} />
+            <FileHandler
+              onChange={this.props.setMergeData}
+              fileName={mergeFileName}
+              dropText="Drop merge file here"
+              textareaPlaceholder="Paste merge data here ..."
+              isActive={hasBaseData}
+            />
           </FileSection>
         </FileSectionWrapper>
 
-        <FileSectionWrapper isVisible={(hasBaseData || hasMergeData)}>
-          <FileSection isVisible={hasBaseData} style={{ textAlign: 'center' }}>
-            File 1 (Base)
+        <FileSectionWrapper>
+          <FileSection style={{ textAlign: 'center' }}>
+            File 1
           </FileSection>
           <ButtonWrapper isVisible={(hasBaseData && hasMergeData)}>
             <ButtonLight onClick={this.props.swapData}>
               <SwapIcon style={{ width: '16px', height: '16px' }} />
             </ButtonLight>
           </ButtonWrapper>
-          <FileSection isVisible={hasMergeData} style={{ textAlign: 'center' }}>
+          <FileSection style={{ textAlign: 'center' }}>
             File 2
           </FileSection>
         </FileSectionWrapper>

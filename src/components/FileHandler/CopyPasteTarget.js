@@ -21,7 +21,10 @@ class CopyPasteTarget extends PureComponent {
   render() {
     return (
       <CopyPasteWrapper>
-        <Textarea placeholder="Paste dataset here..." onChange={this.props.onChange} />
+        <Textarea
+          placeholder={this.props.placeholder}
+          onChange={this.props.onChange}
+        />
       </CopyPasteWrapper>
     );
   }

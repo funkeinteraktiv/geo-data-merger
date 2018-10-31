@@ -13,6 +13,11 @@ import FileIcon from '../../../public/images/file.svg';
 import { parseFile } from '~/utils';
 import CopyPasteTarget from './CopyPasteTarget';
 
+const StyledTabs = Styled(Tabs)`
+  opacity: ${props => (props.isActive ? 1 : 0.25)};
+  pointer-events: ${props => (props.isActive ? 'default' : 'none')};
+`;
+
 const TabContainer = Styled(TabList)`
   list-style: none;
   margin: 0;
@@ -67,11 +72,17 @@ const FileName = Styled.div`
 
 class FileHandler extends PureComponent {
   static propTypes = {
-    onChange: PropTypes.func
+    onChange: PropTypes.func,
+    isActive: PropTypes.bool,
+    dropText: PropTypes.string,
+    textareaPlaceholder: PropTypes.string
   }
 
   static defaultProps = {
-    onChange: () => {}
+    onChange: () => {},
+    isActive: true,
+    dropText: 'Drop file here',
+    textareaPlaceholder: 'Paste data here'
   }
 
   onDrop(acceptedFiles) {
@@ -112,7 +123,7 @@ class FileHandler extends PureComponent {
 
   renderFile() {
     if (!this.props.fileName) {
-      return 'Drop file here';
+      return this.props.dropText;
     }
 
     return (
@@ -125,7 +136,7 @@ class FileHandler extends PureComponent {
 
   render() {
     return (
-      <Tabs>
+      <StyledTabs isActive={this.props.isActive}>
         <TabContainer>
           <Tab>Upload File</Tab>
           <Tab>Copy & Paste</Tab>
@@ -144,10 +155,10 @@ class FileHandler extends PureComponent {
         <TabPanel>
           <CopyPasteTarget
             onChange={evt => this.onPaste(evt)}
+            placeholder={this.props.textareaPlaceholder}
           />
         </TabPanel>
-
-      </Tabs>
+      </StyledTabs>
     );
   }
 }
