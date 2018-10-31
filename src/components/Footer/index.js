@@ -11,15 +11,23 @@ const FooterInner = Styled.div`
   max-width: 960px;
   margin: 0 auto;
   padding: 0 16px;
-`;
 
+  a {
+    color: white;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+`;
 
 class Footer extends PureComponent {
   render() {
     return (
       <FooterWrapper>
         <FooterInner>
-          Imprint / Privacy
+          <a href="https://github.com/funkeinteraktiv">Imprint / Privacy</a>
         </FooterInner>
       </FooterWrapper>
     );

@@ -16,7 +16,8 @@
     "template-curly-spacing" : "off",
     "indent": "off",
     "consistent-return": 0,
-    "react/jsx-one-expression-per-line" : 0
+    "react/jsx-one-expression-per-line" : 0,
+    "operator-linebreak": 0
   },
   "env": {
     "browser": true
