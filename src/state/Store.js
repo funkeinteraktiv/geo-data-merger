@@ -5,6 +5,8 @@ const Store = createStore({
   mergeData: [],
   baseKey: null,
   mergeKey: null,
+  baseDataError: null,
+  mergeDataError: null,
   downloadFormat: null,
   excludeFields: []
 });

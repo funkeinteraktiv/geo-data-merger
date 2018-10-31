@@ -1,23 +1,39 @@
 /* eslint-disable */
-const setBaseData = (state, fileData) => {
+const setBaseData = store => (state, fileData) => {
+  const data = setData('base', store, fileData);
   const isDelete = fileData === null;
 
   return {
-    baseData: isDelete ? [] : fileData.data,
-    baseKey: isDelete ? '' : fileData.data.columns[0],
-    baseFileName: isDelete ? '' : fileData.fileName,
-    baseFileType: isDelete ? '' : fileData.type,
-    downloadFormat: isDelete ? null : fileData.data.type
+    ...data,
+    downloadFormat: isDelete ? null : fileData.data.type,
   };
 }
 
-const setMergeData = (state, fileData) => {
+const setMergeData = store => (state, fileData) => {
+  const data = setData('merge', store, fileData);
+
+  return data;
+}
+
+const setData = (key, store, fileData) => {
   const isDelete = fileData === null;
+  const isValid = !isDelete && fileData.data.type;
+
+  if (!isValid) {
+    window.setTimeout(() => {
+      store.setState({ [`${key}DataError`]: null })
+    }, 4500);
+
+    return {
+      [`${key}DataError`]: !isValid
+    };
+  }
+
   return {
-    mergeData: isDelete ? [] :fileData.data,
-    mergeKey: isDelete ? '' : fileData.data.columns[0],
-    mergeFileName: isDelete ? '' : fileData.fileName,
-    mergeFileType: isDelete ? '' : fileData.type
+    [`${key}Data`]: isDelete ? [] : fileData.data,
+    [`${key}Key`]: isDelete ? '' : fileData.data.columns[0],
+    [`${key}FileName`]: isDelete ? '' : fileData.fileName,
+    [`${key}FileType`]: isDelete ? '' : fileData.type
   };
 }
 
@@ -49,9 +65,9 @@ const toggleExcludeField = (state, fieldName) => {
   return { excludeFields: state.excludeFields.filter((d, i) => i !== index) }
 }
 
-export default Store => ({
-  setBaseData,
-  setMergeData,
+export default store => ({
+  setBaseData: setBaseData(store),
+  setMergeData: setMergeData(store),
   setBaseKey,
   setMergeKey,
   setDownloadFormat,

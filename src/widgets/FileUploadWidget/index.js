@@ -10,6 +10,7 @@ import Widget from '~/components/Widget';
 import ButtonLight from '~/components/ButtonLight';
 import FileSectionWrapper from '~/components/FileSectionWrapper';
 import FileSection from '~/components/FileSection';
+import ErrorMessage from '~/components/ErrorMessage';
 
 const ButtonWrapper = Styled.div`
   display: ${props => (props.isVisible ? 'block' : 'none')};
@@ -22,10 +23,19 @@ const ButtonWrapper = Styled.div`
 
 const step = 0;
 
+function renderError() {
+  return (
+    <ErrorMessage>
+      Please check if your data is valid json, csv, geojson or topojson.
+    </ErrorMessage>
+  );
+}
+
 class FileUploadWidget extends PureComponent {
   render() {
     const {
-      baseData, baseFileName, mergeData, mergeFileName
+      baseData, baseFileName, baseDataError,
+      mergeData, mergeFileName, mergeDataError
     } = this.props;
     const hasBaseData = !!baseData.length;
     const hasMergeData = !!mergeData.length;
@@ -44,6 +54,7 @@ class FileUploadWidget extends PureComponent {
               dropText="Drop base file here"
               textareaPlaceholder="Paste base data here ..."
             />
+            {baseDataError && renderError()}
           </FileSection>
           <FileSection>
             <FileHandler
@@ -53,6 +64,7 @@ class FileUploadWidget extends PureComponent {
               textareaPlaceholder="Paste merge data here ..."
               isActive={hasBaseData}
             />
+            {mergeDataError && renderError()}
           </FileSection>
         </FileSectionWrapper>
 
@@ -87,5 +99,7 @@ export default connect(state => ({
   baseData: state.baseData,
   baseFileName: state.baseFileName,
   mergeData: state.mergeData,
-  mergeFileName: state.mergeFileName
+  mergeFileName: state.mergeFileName,
+  baseDataError: state.baseDataError,
+  mergeDataError: state.mergeDataError
 }), Actions)(FileUploadWidget);

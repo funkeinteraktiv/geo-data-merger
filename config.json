@@ -3,7 +3,7 @@
     "title": "Geo Data Merger",
     "description": "A data merger for json, csv, geojson and topojson files.",
     "viewport": "width=device-width, initial-scale=1",
-    "robots": "noindex, nofollow"
+    "robots": "index, follow"
   },
   "defaultDelimiters": [",", ";", "\t"],
   "downloadFormats": ["csv", "json", "geojson", "topojson"],
