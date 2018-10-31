@@ -33,23 +33,27 @@ const TableWrapper = Styled.div`
 
 class DataTable extends PureComponent {
   static propTypes = {
-    data: PropTypes.arrayOf(PropTypes.object)
+    data: PropTypes.arrayOf(PropTypes.object),
+    excludeFields: PropTypes.arrayOf(PropTypes.string),
   }
 
   static defaultProps = {
-    data: []
+    data: [],
+    excludeFields: []
   }
 
   render() {
-    const { data } = this.props;
+    const { data, excludeFields } = this.props;
 
     data.columns = data.columns || [];
 
-    const columns = data.columns.filter(col => col.indexOf('__' !== 0)).map(col => ({
-      Header: col,
-      accessor: col,
-      Cell: row => (<div>{JSON.stringify(row.value)}</div>)
-    }));
+    const columns = data.columns
+      .filter(col => col.indexOf('__' !== 0) && !excludeFields.find(fieldName => fieldName === col))
+      .map(col => ({
+        Header: col,
+        accessor: col,
+        Cell: row => (<div>{JSON.stringify(row.value)}</div>)
+      }));
 
     return (
       <TableWrapper>

@@ -16,12 +16,13 @@ class ResultWidget extends Component {
         title={config.sections[step].title}
         subtitle={config.sections[step].subtitle}
       >
-        <DataTable data={this.props.resultData} />
+        <DataTable data={this.props.resultData} excludeFields={this.props.excludeFields} />
       </Widget>
     );
   }
 }
 
 export default connect(state => ({
-  resultData: mergedDataSelector(state)
+  resultData: mergedDataSelector(state),
+  excludeFields: state.excludeFields
 }))(ResultWidget);
