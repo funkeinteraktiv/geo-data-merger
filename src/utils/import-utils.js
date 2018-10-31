@@ -73,20 +73,25 @@ export function getColumns(data) {
 
 export function unifyData(data) {
   let res = [];
+  let type = '';
 
   if (isGeoJSON(data)) {
     res = geoJSON2JSON(data);
-  }
-
-  if (isTopoJSON(data)) {
+    type = 'geojson';
+  } else if (isTopoJSON(data)) {
     res = topoJSON2JSON(data);
-  }
-
-  if (data.length) {
+    type = 'topojson';
+  } else if (data.length && data.columns) {
+    type = 'csv';
+    res = data;
+  } else if (data.length) {
+    type = 'json';
     res = data;
   }
 
   res.columns = getColumns(res);
+  res.type = type;
+
   return res;
 }
 

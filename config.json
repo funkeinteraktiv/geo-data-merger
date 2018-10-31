@@ -12,6 +12,6 @@
     { "title": "Select Keys", "subtitle": "Choose the keys for merging the data." },
     { "title": "Result", "subtitle": "Check out the result to see if everything worked as expected." },
     { "title": "Select Output Fields", "subtitle": "Choose which data should be included in your final result." },
-    { "title": "Download", "subtitle": "Download the merged data as csv, json or geojson." }
+    { "title": "Download", "subtitle": "Download the merged data as csv, json, geojson ot topojson (in case the base is geo data)." }
   ]
 }

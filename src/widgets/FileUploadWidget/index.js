@@ -24,7 +24,9 @@ const step = 0;
 
 class FileUploadWidget extends PureComponent {
   render() {
-    const { baseData, baseFileName, mergeData, mergeFileName } = this.props;
+    const {
+      baseData, baseFileName, mergeData, mergeFileName
+    } = this.props;
     const hasBaseData = !!baseData.length;
     const hasMergeData = !!mergeData.length;
 

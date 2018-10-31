@@ -37,6 +37,12 @@ export const mergedDataSelector = createSelector(
   }
 );
 
+export const isBaseDataGeo = createSelector(
+  [baseDataSelector],
+  baseData => ['geojson', 'topojson'].includes(baseData.type)
+);
+
 export default {
-  mergedDataSelector
+  mergedDataSelector,
+  isBaseDataGeo
 };

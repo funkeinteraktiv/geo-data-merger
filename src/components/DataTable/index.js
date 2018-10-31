@@ -34,7 +34,7 @@ const TableWrapper = Styled.div`
 class DataTable extends PureComponent {
   static propTypes = {
     data: PropTypes.arrayOf(PropTypes.object),
-    excludeFields: PropTypes.arrayOf(PropTypes.string),
+    excludeFields: PropTypes.arrayOf(PropTypes.string)
   }
 
   static defaultProps = {
@@ -45,14 +45,13 @@ class DataTable extends PureComponent {
   render() {
     const { data, excludeFields } = this.props;
 
-    data.columns = data.columns || [];
-
-    const columns = data.columns
+    const columns = (data.columns || [])
+      // don't show columns we created in the background, don't show excluded fields
       .filter(col => col.indexOf('__' !== 0) && !excludeFields.find(fieldName => fieldName === col))
       .map(col => ({
         Header: col,
         accessor: col,
-        Cell: row => (<div>{JSON.stringify(row.value)}</div>)
+        Cell: row => JSON.stringify(row.value)
       }));
 
     return (

@@ -39,9 +39,9 @@ class Select extends Component {
   render() {
     return (
       <StyledSelect
-        defaultValue="default"
         onChange={evt => this.onChange(evt)}
         disabled={this.props.disabled}
+        value={this.props.value}
       >
         {this.props.options.length === 0 && <option value="default" disabled>{this.props.placeholder}</option>}
         {this.props.options.map(opt => (

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Styled from 'styled-components';
 import { connect } from 'unistore/react';
 
-import { mergedDataSelector } from '~/state/Selectors';
+import { mergedDataSelector, isBaseDataGeo } from '~/state/Selectors';
 import { downloadFile } from '~/utils';
 
 import Actions from '~/state/Actions';
@@ -28,12 +28,17 @@ class DownloadWidget extends Component {
   render() {
     const {
       baseData,
-      mergeData,
       setDownloadFormat,
       mergedData,
       downloadFormat,
-      excludeFields
+      excludeFields,
+      baseIsGeo
     } = this.props;
+
+    const isDisabled = baseData.length === 0;
+    const formats = baseIsGeo ?
+      config.downloadFormats :
+      config.downloadFormats.filter(d => !['geojson', 'topojson'].includes(d));
 
     return (
       <Widget
@@ -44,10 +49,11 @@ class DownloadWidget extends Component {
         <DownloadWrapper>
           <DownloadInteraction>
             <Select
-              options={config.downloadFormats}
-              placeholder="Select download format..."
+              options={isDisabled ? [] : formats}
+              placeholder="Select format..."
               onChange={setDownloadFormat}
-              disabled={(baseData.length === 0 && mergeData.length === 0)}
+              disabled={isDisabled}
+              value={downloadFormat || 'default'}
             />
             <Button
               disabled={!mergedData || !mergedData.length}
@@ -65,8 +71,8 @@ class DownloadWidget extends Component {
 
 export default connect(state => ({
   baseData: state.baseData,
-  mergeData: state.mergeData,
   mergedData: mergedDataSelector(state),
   downloadFormat: state.downloadFormat,
-  excludeFields: state.excludeFields
+  excludeFields: state.excludeFields,
+  baseIsGeo: isBaseDataGeo(state)
 }), Actions)(DownloadWidget);

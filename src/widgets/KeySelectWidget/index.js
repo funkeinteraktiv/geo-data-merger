@@ -21,7 +21,9 @@ const step = 1;
 
 class KeySelectWidget extends PureComponent {
   render() {
-    const { baseData, mergeData } = this.props;
+    const {
+      baseData, mergeData, baseKey, mergeKey
+    } = this.props;
     const baseKeys = idx(baseData, _ => _.columns) || [];
     const mergeKeys = idx(mergeData, _ => _.columns) || [];
 
@@ -39,6 +41,7 @@ class KeySelectWidget extends PureComponent {
                 onChange={this.props.setBaseKey}
                 placeholder="Select key..."
                 disabled={baseData.length === 0}
+                value={baseKey || 'default'}
               />
             </SelectWrapper>
           </FileSection>
@@ -49,6 +52,7 @@ class KeySelectWidget extends PureComponent {
                 onChange={this.props.setMergeKey}
                 placeholder="Select key..."
                 disabled={mergeData.length === 0}
+                value={mergeKey || 'default'}
               />
             </SelectWrapper>
           </FileSection>
@@ -60,5 +64,7 @@ class KeySelectWidget extends PureComponent {
 
 export default connect(state => ({
   baseData: state.baseData,
-  mergeData: state.mergeData
+  mergeData: state.mergeData,
+  baseKey: state.baseKey,
+  mergeKey: state.mergeKey
 }), Actions)(KeySelectWidget);

@@ -38,7 +38,9 @@ const Subtitle = Styled.div`
   font-size: 14px;
 `;
 
-export default ({title, subtitle, step, children }) => (
+export default ({
+  title, subtitle, step, children
+}) => (
   <Widget>
     <WidgetTitleWrapper>
       <Step>{step + 1}</Step>

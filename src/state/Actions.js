@@ -1,11 +1,13 @@
 /* eslint-disable */
 const setBaseData = (state, fileData) => {
   const isDelete = fileData === null;
+
   return {
     baseData: isDelete ? [] : fileData.data,
     baseKey: isDelete ? '' : fileData.data.columns[0],
     baseFileName: isDelete ? '' : fileData.fileName,
-    baseFileType: isDelete ? '' : fileData.type
+    baseFileType: isDelete ? '' : fileData.type,
+    downloadFormat: isDelete ? null : fileData.data.type
   };
 }
 
