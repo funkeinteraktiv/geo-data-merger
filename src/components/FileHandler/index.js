@@ -88,6 +88,7 @@ const FileName = Styled.div`
 class FileHandler extends PureComponent {
   static propTypes = {
     onChange: PropTypes.func,
+    onError: PropTypes.func,
     isActive: PropTypes.bool,
     dropText: PropTypes.string,
     textareaPlaceholder: PropTypes.string
@@ -95,12 +96,17 @@ class FileHandler extends PureComponent {
 
   static defaultProps = {
     onChange: () => {},
+    onError: () => {},
     isActive: true,
     dropText: 'Drop file here',
     textareaPlaceholder: 'Paste data here'
   }
 
   onDrop(acceptedFiles) {
+    if (!acceptedFiles.length) {
+      return this.props.onError();
+    }
+
     this.readFile(acceptedFiles[0]);
   }
 
@@ -110,7 +116,7 @@ class FileHandler extends PureComponent {
 
     if (result) {
       this.props.onChange({
-        data: result,
+        ...result,
         fileName: '',
         type: 'copy-paste'
       });
@@ -131,7 +137,7 @@ class FileHandler extends PureComponent {
 
       if (result) {
         this.props.onChange({
-          data: result,
+          ...result,
           fileName: file.name,
           type: file.type
         });

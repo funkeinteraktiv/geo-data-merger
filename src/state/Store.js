@@ -7,6 +7,10 @@ const Store = createStore({
   mergeKey: null,
   baseDataError: null,
   mergeDataError: null,
+  baseFileType: '',
+  mergeFileType: '',
+  baseFirstRowHeader: true,
+  mergeFirstRowHeader: true,
   downloadFormat: null,
   excludeFields: []
 });

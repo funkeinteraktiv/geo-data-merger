@@ -2,7 +2,7 @@ import React, { PureComponent, Fragment } from 'react';
 import Styled from 'styled-components';
 
 import Headline from '~/components/Headline';
-import FileUploadWidget from '~/widgets/FileUploadWidget';
+import FileChooserWidget from '~/widgets/FileChooserWidget';
 import KeySelectWidget from '~/widgets/KeySelectWidget';
 import ResultWidget from '~/widgets/ResultWidget';
 import FieldSelectWidget from '~/widgets/FieldSelectWidget';
@@ -23,7 +23,7 @@ class App extends PureComponent {
         <Header />
         <AppWrapper>
           <Headline />
-          <FileUploadWidget />
+          <FileChooserWidget />
           <KeySelectWidget />
           <ResultWidget />
           <FieldSelectWidget />

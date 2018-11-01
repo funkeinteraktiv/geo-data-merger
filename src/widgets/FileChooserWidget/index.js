@@ -11,6 +11,7 @@ import ButtonLight from '~/components/ButtonLight';
 import FileSectionWrapper from '~/components/FileSectionWrapper';
 import FileSection from '~/components/FileSection';
 import ErrorMessage from '~/components/ErrorMessage';
+import Checkbox from '~/components/Checkbox';
 
 const ButtonWrapper = Styled.div`
   display: ${props => (props.isVisible ? 'block' : 'none')};
@@ -31,11 +32,22 @@ function renderError() {
   );
 }
 
-class FileUploadWidget extends PureComponent {
+class FileChooserWidget extends PureComponent {
+  renderCsvOptions(fileType) {
+    return (
+      <Checkbox
+        style={{ marginTop: '8px' }}
+        checked={this.props[`${fileType}FirstRowHeader`]}
+        onChange={() => this.props.toggleFirstRowHeader(fileType)}
+        label="First row is header"
+      />
+    );
+  }
+
   render() {
     const {
-      baseData, baseFileName, baseDataError,
-      mergeData, mergeFileName, mergeDataError
+      baseData, baseFileName, baseDataError, baseFileType,
+      mergeData, mergeFileName, mergeDataError, mergeFileType
     } = this.props;
     const hasBaseData = !!baseData.length;
     const hasMergeData = !!mergeData.length;
@@ -50,6 +62,7 @@ class FileUploadWidget extends PureComponent {
           <FileSection>
             <FileHandler
               onChange={this.props.setBaseData}
+              onError={() => this.props.setError('base')}
               fileName={baseFileName}
               dropText="Drop base file here"
               textareaPlaceholder="Paste base data here ..."
@@ -59,6 +72,7 @@ class FileUploadWidget extends PureComponent {
           <FileSection>
             <FileHandler
               onChange={this.props.setMergeData}
+              onError={() => this.props.setError('merge')}
               fileName={mergeFileName}
               dropText="Drop merge file here"
               textareaPlaceholder="Paste merge data here ..."
@@ -84,9 +98,11 @@ class FileUploadWidget extends PureComponent {
 
         <FileSectionWrapper isVisible={(hasBaseData || hasMergeData)}>
           <FileSection isVisible={hasBaseData}>
+            {baseFileType.includes('csv') && this.renderCsvOptions('base')}
             <DataTable data={this.props.baseData} />
           </FileSection>
           <FileSection isVisible={hasMergeData} style={{ marginLeft: 'auto' }}>
+            {mergeFileType.includes('csv') && this.renderCsvOptions('merge')}
             <DataTable data={this.props.mergeData} />
           </FileSection>
         </FileSectionWrapper>
@@ -98,8 +114,12 @@ class FileUploadWidget extends PureComponent {
 export default connect(state => ({
   baseData: state.baseData,
   baseFileName: state.baseFileName,
+  baseFileType: state.baseFileType,
+  baseDataError: state.baseDataError,
+  baseFirstRowHeader: state.baseFirstRowHeader,
   mergeData: state.mergeData,
   mergeFileName: state.mergeFileName,
-  baseDataError: state.baseDataError,
-  mergeDataError: state.mergeDataError
-}), Actions)(FileUploadWidget);
+  mergeDataError: state.mergeDataError,
+  mergeFileType: state.mergeFileType,
+  mergeFirstRowHeader: state.mergeFirstRowHeader
+}), Actions)(FileChooserWidget);

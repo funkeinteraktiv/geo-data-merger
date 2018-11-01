@@ -18,12 +18,21 @@ export function guessDelimiter(file) {
   }) || ',';
 }
 
-export function parseCsv(file) {
+export function parseCsv(file, isFirstRowHeader = true) {
   let res = false;
 
   try {
     const delimiter = guessDelimiter(file);
-    res = D3Dsv.dsvFormat(delimiter).parse(file);
+    const formattedCsv = D3Dsv.dsvFormat(delimiter);
+
+    if (isFirstRowHeader) {
+      res = formattedCsv.parse(file);
+    } else {
+      res = formattedCsv.parseRows(file, d => d.reduce((row, item, i) => {
+        row[`column_${i + 1}`] = item;
+        return row;
+      }, {}));
+    }
   } catch (e) {
     res = false;
   }
@@ -103,10 +112,14 @@ export function parseFile(file) {
     return false;
   }
 
-  return unifyData(jsonData);
+  return {
+    data: unifyData(jsonData),
+    rawData: file
+  };
 }
 
 export default {
   parseFile,
-  getColumns
+  getColumns,
+  unifyData
 };
