@@ -14,6 +14,10 @@ const TableWrapper = Styled.div`
     height: 200px;
   }
 
+  .ReactTable .rt-tbody {
+    overflow: unset;
+  }
+
   .ReactTable .rt-thead .rt-th, .ReactTable .rt-thead .rt-td,
   .ReactTable .rt-thead.-header {
     box-shadow: none;
