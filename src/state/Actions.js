@@ -60,7 +60,15 @@ const setDownloadFormat = (state, downloadFormat) => {
 const swapData = (state) => {
   return {
     mergeData: state.baseData,
-    baseData: state.mergeData
+    baseData: state.mergeData,
+    mergeRawData: state.baseRawData,
+    baseRawData: state.mergeRawData,
+    mergeKey: state.baseKey,
+    baseKey: state.mergeKey,
+    mergeFileName: state.baseFileName,
+    baseFileName: state.mergeFileName,
+    mergeFileType: state.baseFileType,
+    baseFileType: state.mergeFileType,
   };
 }
 
