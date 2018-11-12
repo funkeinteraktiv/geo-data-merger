@@ -4,10 +4,11 @@ import Styled from 'styled-components';
 const Title = Styled.h1`
   margin: 0;
   font-weight: 400;
+  font-size: 60px;
 `;
 
 const Bold = Styled.span`
-  font-weight: 700;
+  font-weight: 900;
 `;
 
 const Subtitle = Styled.div`
