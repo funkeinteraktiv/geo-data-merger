@@ -1,6 +1,12 @@
 import React, { Fragment } from 'react';
 import Styled from 'styled-components';
 
+const Headline = Styled.div`
+  text-align: center;
+  margin-bottom: 50px;
+  `;
+
+
 const Title = Styled.h1`
   margin: 0;
   font-weight: 400;
@@ -18,7 +24,9 @@ const Subtitle = Styled.div`
 
 export default () => (
   <Fragment>
-    <Title>(Geo) <Bold>DataMerger</Bold></Title>
-    <Subtitle>A small tool for merging different Datasets together.</Subtitle>
+    <Headline>
+      <Title>(Geo) <Bold>DataMerger</Bold></Title>
+      <Subtitle>A small tool for merging different Datasets together.</Subtitle>
+    </Headline>
   </Fragment>
 );
