@@ -45,6 +45,7 @@ class DownloadWidget extends Component {
         step={step}
         title={config.sections[step].title}
         subtitle={config.sections[step].subtitle}
+        isActive={baseData.length > 0}
       >
         <DownloadWrapper>
           <DownloadInteraction>

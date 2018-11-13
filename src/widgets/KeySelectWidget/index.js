@@ -26,12 +26,14 @@ class KeySelectWidget extends PureComponent {
     } = this.props;
     const baseKeys = idx(baseData, _ => _.columns) || [];
     const mergeKeys = idx(mergeData, _ => _.columns) || [];
+    const isActive = baseData.length > 0;
 
     return (
       <Widget
         step={step}
         title={config.sections[step].title}
         subtitle={config.sections[step].subtitle}
+        isActive={isActive}
       >
         <FileSectionWrapper>
           <FileSection>
@@ -40,7 +42,7 @@ class KeySelectWidget extends PureComponent {
                 options={baseKeys}
                 onChange={this.props.setBaseKey}
                 placeholder="Select key..."
-                disabled={baseData.length === 0}
+                disabled={!isActive}
                 value={baseKey || 'default'}
               />
             </SelectWrapper>

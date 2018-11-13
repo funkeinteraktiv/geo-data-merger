@@ -11,10 +11,11 @@ const WidgetTitleWrapper = Styled.div`
   display: flex;
   align-items: center;
   margin-bottom: 10px;
+  opacity: ${props => (props.isActive ? 1 : 0.5)};
 `;
 
 const Step = Styled.div`
-  background: ${props => props.theme.colors.interaction};
+  background: ${props => (props.isActive ? props.theme.colors.interaction : props.theme.colors.interactionInactive)};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -39,12 +40,12 @@ const Subtitle = Styled.div`
 `;
 
 export default ({
-  title, subtitle, step, children
+  title, subtitle, step, children, isActive = true
 }) => (
   <Widget>
-    <WidgetTitleWrapper>
-      <Step>{step + 1}</Step>
-      <Title>{title}</Title>
+    <WidgetTitleWrapper isActive={isActive}>
+      <Step isActive={isActive}>{step + 1}</Step>
+      <Title isActive={isActive}>{title}</Title>
     </WidgetTitleWrapper>
     <Subtitle>{subtitle}</Subtitle>
     {children}

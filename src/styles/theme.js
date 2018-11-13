@@ -7,6 +7,7 @@ export default {
     section: '#EEEEEE',
     // interaction: '#FFAE55',
     interaction: '#5AFF78',
+    interactionInactive: '#ddd',
     darkgray: '#888',
     darkBackground: '#3D3D3D',
     warning: '#dd8080'

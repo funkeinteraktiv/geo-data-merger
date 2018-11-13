@@ -40,6 +40,7 @@ class FieldSelectWidget extends PureComponent {
         step={step}
         title={config.sections[step].title}
         subtitle={config.sections[step].subtitle}
+        isActive={this.props.baseData.length > 0}
       >
         {hasData ? this.renderCheckboxes() : 'No data merged yet.'}
       </Widget>
@@ -49,5 +50,6 @@ class FieldSelectWidget extends PureComponent {
 
 export default connect(state => ({
   mergedData: mergedDataSelector(state),
+  baseData: state.baseData,
   excludeFields: state.excludeFields
 }), Actions)(FieldSelectWidget);

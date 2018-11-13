@@ -15,6 +15,7 @@ class ResultWidget extends Component {
         step={step}
         title={config.sections[step].title}
         subtitle={config.sections[step].subtitle}
+        isActive={this.props.baseData.length > 0}
       >
         <DataTable data={this.props.resultData} excludeFields={this.props.excludeFields} />
       </Widget>
@@ -24,5 +25,6 @@ class ResultWidget extends Component {
 
 export default connect(state => ({
   resultData: mergedDataSelector(state),
+  baseData: state.baseData,
   excludeFields: state.excludeFields
 }))(ResultWidget);
