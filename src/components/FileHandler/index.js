@@ -17,7 +17,7 @@ import CopyPasteTarget from './CopyPasteTarget';
 
 const StyledTabs = Styled(Tabs)`
   opacity: ${props => (props.isActive ? 1 : 0.25)};
-  pointer-events: ${props => (props.isActive ? 'default' : 'none')};
+  pointer-events: ${props => (props.isActive ? 'all' : 'none')};
 `;
 
 const TabContainer = Styled(TabList)`
@@ -48,6 +48,7 @@ const Dropzone = Styled(ReactDropzone)`
   align-items: center;
   justify-content: center;
   font-weight: 700;
+  overflow: hidden;
 `;
 
 const FileWrapper = Styled.div`

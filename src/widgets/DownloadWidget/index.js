@@ -4,6 +4,7 @@ import { connect } from 'unistore/react';
 
 import { mergedDataSelector, isBaseDataGeo } from '~/state/Selectors';
 import { downloadFile } from '~/utils';
+import { media } from '~/styles/Utils';
 
 import Actions from '~/state/Actions';
 
@@ -13,13 +14,30 @@ import Button from '~/components/Button';
 
 const DownloadWrapper = Styled.div`
   display: flex;
-  justify-content: center;
   padding: 16px;
   background: ${props => props.theme.colors.section};
 `;
 
 const DownloadInteraction = Styled.div`
   display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+
+  ${media.m`
+    justify-content: center;
+    flex-direction: row;
+  `}
+`;
+
+const DownloadButton = Styled(Button)`
+  width: 200px;
+  margin-top: 10px;
+
+  ${media.m`
+    margin-left: 20px;
+    margin-top: 0;
+  `}
 `;
 
 const step = 4;
@@ -56,13 +74,12 @@ class DownloadWidget extends Component {
               disabled={isDisabled}
               value={downloadFormat || 'default'}
             />
-            <Button
+            <DownloadButton
               disabled={!mergedData || !mergedData.length}
               onClick={() => downloadFile(mergedData, downloadFormat, excludeFields)}
-              style={{ marginLeft: '20px', width: '200px' }}
             >
               Download
-            </Button>
+            </DownloadButton>
           </DownloadInteraction>
         </DownloadWrapper>
       </Widget>
