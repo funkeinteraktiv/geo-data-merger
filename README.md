@@ -1,7 +1,7 @@
 <h1 align="center">Geo Data Merger</h1
 <p align="center">A small tool for merging datasets.</p>
 
-![screenshot](/screenshot.jpg)
+![screenshot](/screenshot.png)
 
 ## Installation
 
