@@ -1,13 +1,13 @@
 import React from 'react';
 import Styled from 'styled-components';
 
-const Widget = Styled.div`
+const Section = Styled.div`
   margin: 32px 0 16px 0;
   padding: 15px 0;
-  border-top: 3px solid ${props => props.theme.colors.darkBackground};
+  border-top: 3px solid ${props => (props.isActive ? props.theme.colors.darkBackground : props.theme.colors.interactionInactive)};
 `;
 
-const WidgetTitleWrapper = Styled.div`
+const SectionTitleWrapper = Styled.div`
   display: flex;
   align-items: center;
   margin-bottom: 10px;
@@ -34,20 +34,20 @@ const Title = Styled.h2`
 
 const Subtitle = Styled.div`
   margin: 0 0 16px 0;
-  color: ${props => props.theme.colors.darkgray};
-  font-family: ${props => props.theme.fonts.mono};
-  font-size: 14px;
+  color: ${props => (props.isActive ? props.theme.colors.black : props.theme.colors.darkgray)};
+  font-size: 15px;
+  line-height: 1.3;
 `;
 
 export default ({
   title, subtitle, step, children, isActive = true
 }) => (
-  <Widget>
-    <WidgetTitleWrapper isActive={isActive}>
+  <Section isActive={isActive}>
+    <SectionTitleWrapper isActive={isActive}>
       <Step isActive={isActive}>{step + 1}</Step>
       <Title isActive={isActive}>{title}</Title>
-    </WidgetTitleWrapper>
-    <Subtitle>{subtitle}</Subtitle>
+    </SectionTitleWrapper>
+    <Subtitle isActive={isActive} dangerouslySetInnerHTML={{ __html: subtitle }} />
     {children}
-  </Widget>
+  </Section>
 );

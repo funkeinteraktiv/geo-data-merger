@@ -60,7 +60,7 @@ export function cleanData(data, options = {}) {
   return res;
 }
 
-export function downloadFile(data, filetype, excludeFields = []) {
+export function getDownloadFileData(data, filetype, excludeFields = []) {
   const dataClean = cleanData(data, {
     excludeFields
   });
@@ -98,6 +98,12 @@ export function downloadFile(data, filetype, excludeFields = []) {
       name: 'output.csv'
     };
   }
+
+  return downloadData;
+}
+
+export function downloadFile(data, filetype, excludeFields = []) {
+  const downloadData = getDownloadFileData(data, filetype, excludeFields);
 
   if (downloadData) {
     const dataBlob = new Blob([downloadData.data], { type: downloadData.type });

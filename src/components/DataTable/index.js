@@ -67,7 +67,7 @@ class DataTable extends PureComponent {
           showPagination={false}
           sortable={false}
           minRows={0}
-          noDataText="↑ Please upload a file to see the result."
+          noDataText="↑ Please drop a file to see the result."
         />
       </TableWrapper>
     );

@@ -6,10 +6,10 @@ import SwapIcon from '../../../public/images/swap.svg';
 import Actions from '~/state/Actions';
 import FileHandler from '~/components/FileHandler';
 import DataTable from '~/components/DataTable';
-import Widget from '~/components/Widget';
+import Section from '~/components/Section';
 import ButtonLight from '~/components/ButtonLight';
-import FileSectionWrapper from '~/components/FileSectionWrapper';
-import FileSection from '~/components/FileSection';
+import Row from '~/components/Row';
+import Column from '~/components/Column';
 import ErrorMessage from '~/components/ErrorMessage';
 import Checkbox from '~/components/Checkbox';
 
@@ -32,7 +32,7 @@ function renderError() {
   );
 }
 
-class FileChooserWidget extends PureComponent {
+class FileChooserSection extends PureComponent {
   renderCsvOptions(fileType) {
     return (
       <Checkbox
@@ -53,13 +53,13 @@ class FileChooserWidget extends PureComponent {
     const hasMergeData = !!mergeData.length;
 
     return (
-      <Widget
+      <Section
         step={step}
         title={config.sections[step].title}
         subtitle={config.sections[step].subtitle}
       >
-        <FileSectionWrapper>
-          <FileSection>
+        <Row>
+          <Column>
             <FileHandler
               onChange={this.props.setBaseData}
               onError={() => this.props.setError('base')}
@@ -68,8 +68,8 @@ class FileChooserWidget extends PureComponent {
               textareaPlaceholder="Paste base data here ..."
             />
             {baseDataError && renderError()}
-          </FileSection>
-          <FileSection>
+          </Column>
+          <Column>
             <FileHandler
               onChange={this.props.setMergeData}
               onError={() => this.props.setError('merge')}
@@ -79,34 +79,34 @@ class FileChooserWidget extends PureComponent {
               isActive={hasBaseData}
             />
             {mergeDataError && renderError()}
-          </FileSection>
-        </FileSectionWrapper>
+          </Column>
+        </Row>
 
-        <FileSectionWrapper>
-          <FileSection style={{ textAlign: 'center' }}>
+        <Row>
+          <Column style={{ textAlign: 'center' }}>
             File 1
-          </FileSection>
+          </Column>
           <ButtonWrapper isVisible={(hasBaseData && hasMergeData)}>
             <ButtonLight onClick={this.props.swapData}>
-              <SwapIcon style={{ width: '16px', height: '16px' }} />
+              <SwapIcon height={16} />
             </ButtonLight>
           </ButtonWrapper>
-          <FileSection style={{ textAlign: 'center' }}>
+          <Column style={{ textAlign: 'center' }}>
             File 2
-          </FileSection>
-        </FileSectionWrapper>
+          </Column>
+        </Row>
 
-        <FileSectionWrapper isVisible={(hasBaseData || hasMergeData)}>
-          <FileSection isVisible={hasBaseData}>
-            {baseFileType.includes('csv') && this.renderCsvOptions('base')}
+        <Row isVisible={(hasBaseData || hasMergeData)}>
+          <Column isVisible={hasBaseData}>
             <DataTable data={this.props.baseData} />
-          </FileSection>
-          <FileSection isVisible={hasMergeData} style={{ marginLeft: 'auto' }}>
-            {mergeFileType.includes('csv') && this.renderCsvOptions('merge')}
+            {baseFileType.includes('csv') && this.renderCsvOptions('base')}
+          </Column>
+          <Column isVisible={hasMergeData} style={{ marginLeft: 'auto' }}>
             <DataTable data={this.props.mergeData} />
-          </FileSection>
-        </FileSectionWrapper>
-      </Widget>
+            {mergeFileType.includes('csv') && this.renderCsvOptions('merge')}
+          </Column>
+        </Row>
+      </Section>
     );
   }
 }
@@ -122,4 +122,4 @@ export default connect(state => ({
   mergeDataError: state.mergeDataError,
   mergeFileType: state.mergeFileType,
   mergeFirstRowHeader: state.mergeFirstRowHeader
-}), Actions)(FileChooserWidget);
+}), Actions)(FileChooserSection);

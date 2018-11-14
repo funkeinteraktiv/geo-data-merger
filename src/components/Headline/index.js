@@ -26,7 +26,7 @@ export default () => (
   <Fragment>
     <Headline>
       <Title>(Geo) <Bold>DataMerger</Bold></Title>
-      <Subtitle>A small tool for merging different Datasets together.</Subtitle>
+      <Subtitle>A small tool for merging datasets.</Subtitle>
     </Headline>
   </Fragment>
 );

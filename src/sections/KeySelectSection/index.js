@@ -4,11 +4,12 @@ import idx from 'idx';
 import Styled from 'styled-components';
 
 import Actions from '~/state/Actions';
-
 import Select from '~/components/Select';
-import Widget from '~/components/Widget';
-import FileSectionWrapper from '~/components/FileSectionWrapper';
-import FileSection from '~/components/FileSection';
+import Section from '~/components/Section';
+import Row from '~/components/Row';
+import Column from '~/components/Column';
+import DataTable from '~/components/DataTable';
+import { mergedDataSelector } from '~/state/Selectors';
 
 const SelectWrapper = Styled.div`
   display: flex;
@@ -19,24 +20,25 @@ const SelectWrapper = Styled.div`
 
 const step = 1;
 
-class KeySelectWidget extends PureComponent {
+class KeySelectSection extends PureComponent {
   render() {
     const {
-      baseData, mergeData, baseKey, mergeKey
+      baseData, mergeData, baseKey, mergeKey,
+      resultData, excludeFields
     } = this.props;
     const baseKeys = idx(baseData, _ => _.columns) || [];
     const mergeKeys = idx(mergeData, _ => _.columns) || [];
     const isActive = baseData.length > 0;
 
     return (
-      <Widget
+      <Section
         step={step}
         title={config.sections[step].title}
         subtitle={config.sections[step].subtitle}
         isActive={isActive}
       >
-        <FileSectionWrapper>
-          <FileSection>
+        <Row>
+          <Column>
             <SelectWrapper>
               <Select
                 options={baseKeys}
@@ -46,8 +48,8 @@ class KeySelectWidget extends PureComponent {
                 value={baseKey || 'default'}
               />
             </SelectWrapper>
-          </FileSection>
-          <FileSection>
+          </Column>
+          <Column>
             <SelectWrapper>
               <Select
                 options={mergeKeys}
@@ -57,9 +59,10 @@ class KeySelectWidget extends PureComponent {
                 value={mergeKey || 'default'}
               />
             </SelectWrapper>
-          </FileSection>
-        </FileSectionWrapper>
-      </Widget>
+          </Column>
+        </Row>
+        {isActive && <DataTable data={resultData} excludeFields={excludeFields} />}
+      </Section>
     );
   }
 }
@@ -68,5 +71,7 @@ export default connect(state => ({
   baseData: state.baseData,
   mergeData: state.mergeData,
   baseKey: state.baseKey,
-  mergeKey: state.mergeKey
-}), Actions)(KeySelectWidget);
+  mergeKey: state.mergeKey,
+  resultData: mergedDataSelector(state),
+  excludeFields: state.excludeFields
+}), Actions)(KeySelectSection);

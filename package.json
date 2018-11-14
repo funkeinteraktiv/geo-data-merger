@@ -8,7 +8,7 @@
   "scripts": {
     "build": "BABEL_ENV=production webpack --config webpack/webpack.config.prod.js --colors",
     "start": "webpack-dev-server --config webpack/webpack.config.dev.js",
-    "deploy": "npm run build && git add docs && git commit -m 'chore(docs): update' && git push"
+    "deploy": "npm run build && git add docs && git commit -m 'chore(site): update' && git push"
   },
   "repository": {
     "url": "git@github.com:wbkd/react-starter.git",

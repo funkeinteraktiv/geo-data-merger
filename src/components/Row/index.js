@@ -1,13 +1,13 @@
 import Styled from 'styled-components';
 
-const FileSectionWrapper = Styled.div`
+const Row = Styled.div`
   display: ${props => (props.isVisible ? 'flex' : 'none')};
   justify-content: space-between;
   padding: 10px 0;
 `;
 
-FileSectionWrapper.defaultProps = {
+Row.defaultProps = {
   isVisible: true
 };
 
-export default FileSectionWrapper;
+export default Row;

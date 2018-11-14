@@ -1,12 +1,12 @@
 import Styled from 'styled-components';
 
-const FileSection = Styled.div`
+const Column = Styled.div`
   display: ${props => (props.isVisible ? 'block' : 'none')};
   width: 46%;
 `;
 
-FileSection.defaultProps = {
+Column.defaultProps = {
   isVisible: true
 };
 
-export default FileSection;
+export default Column;

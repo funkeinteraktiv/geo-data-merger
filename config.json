@@ -8,10 +8,8 @@
   "defaultDelimiters": [",", ";", "\t"],
   "downloadFormats": ["csv", "json", "geojson", "topojson"],
   "sections": [
-    { "title": "Add your Data Sets", "subtitle": "We can handle json, csv, geojson, topojson files. We don't upload your data. Everything stays in your browser." },
-    { "title": "Select Keys", "subtitle": "Choose the keys for merging the data." },
-    { "title": "Result", "subtitle": "Check out the result to see if everything worked as expected." },
-    { "title": "Select Output Fields", "subtitle": "Choose which data should be included in your final result." },
-    { "title": "Download", "subtitle": "Download the merged data as csv, json, geojson ot topojson (in case the base is geo data)." }
+    { "title": "Choose your files", "subtitle": "We can handle json, csv, geojson, topojson files.<br /><strong>We don't upload your data.</strong> Everything stays in your browser." },
+    { "title": "Select keys to merge", "subtitle": "Choose the keys for merging the data." },
+    { "title": "Save", "subtitle": "Choose which data should be included in your final result." }
   ]
 }

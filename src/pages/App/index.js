@@ -2,11 +2,9 @@ import React, { PureComponent, Fragment } from 'react';
 import Styled from 'styled-components';
 
 import Headline from '~/components/Headline';
-import FileChooserWidget from '~/widgets/FileChooserWidget';
-import KeySelectWidget from '~/widgets/KeySelectWidget';
-import ResultWidget from '~/widgets/ResultWidget';
-import FieldSelectWidget from '~/widgets/FieldSelectWidget';
-import DownloadWidget from '~/widgets/DownloadWidget';
+import FileChooserSection from '~/sections/FileChooserSection';
+import KeySelectSection from '~/sections/KeySelectSection';
+import DownloadSection from '~/sections/DownloadSection';
 import Footer from '~/components/Footer';
 import Header from '~/components/Header';
 
@@ -23,11 +21,9 @@ class App extends PureComponent {
         <Header />
         <AppWrapper>
           <Headline />
-          <FileChooserWidget />
-          <KeySelectWidget />
-          <ResultWidget />
-          <FieldSelectWidget />
-          <DownloadWidget />
+          <FileChooserSection />
+          <KeySelectSection />
+          <DownloadSection />
         </AppWrapper>
         <Footer />
       </Fragment>
