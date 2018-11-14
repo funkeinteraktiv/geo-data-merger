@@ -1,5 +1,6 @@
-<h1 align="center">Geo Data Merger</h1
-<p align="center">A small tool for merging datasets.</p>
+# Geo Data Merger
+
+A small tool for merging datasets.
 
 ![screenshot](/screenshot.png)
 
