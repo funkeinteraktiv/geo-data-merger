@@ -9,6 +9,7 @@ import GlobalStyles from '~/styles/Global';
 import theme from '~/styles/theme';
 
 const root = document.createElement('div');
+root.id = 'root';
 
 ReactDOM.render(
   <Provider store={Store}>

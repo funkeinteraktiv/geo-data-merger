@@ -18,4 +18,12 @@ export default createGlobalStyle`
     background: ${props => props.theme.colors.background};
     color: ${props => props.theme.colors.darkBackground};
   }
+
+  body, html {
+    height: 100%;
+  }
+
+  #root {
+    height: 100%;
+  }
 `;
