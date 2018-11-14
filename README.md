@@ -1,12 +1,7 @@
-# React Starterkit
+<h1 align="center">Geo Data Merger</h1
+<p align="center">A small tool for merging datasets.</p>
 
-A lightweight Starterkit including [React](https://facebook.github.io/react/), [unistore](https://www.npmjs.com/package/unistore), [Styled Components](https://www.styled-components.com/) and [webpack v4](https://webpack.js.org/).
-
-## Get the kit
-
-```sh
-$ git clone git@github.com:wbkd/react-starter.git && cd react-starter
-```
+![screenshot](/screenshot.png)
 
 ## Installation
 
@@ -31,6 +26,6 @@ Builds a minified version of the application in the build folder.
 $ npm run build
 ```
 
-## Contribute
+#### Based on
 
-Feel free to dive in! [Open an issue](https://github.com/wbkd/react-starter/issues/new) or submit PRs.
+https://github.com/wbkd/react-starter
