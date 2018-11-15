@@ -2,6 +2,7 @@ const Path = require('path');
 const Webpack = require('webpack');
 const merge = require('webpack-merge');
 const common = require('./webpack.common.js');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 const publicPath = process.env.BASENAME || '/';
 
@@ -9,6 +10,7 @@ module.exports = merge(common, {
   mode: 'development',
   devtool: 'cheap-eval-source-map',
   output: {
+    path: Path.join(__dirname, '../build'),
     chunkFilename: 'js/[name].chunk.js'
   },
   devServer: {
@@ -19,6 +21,7 @@ module.exports = merge(common, {
     host: '0.0.0.0'
   },
   plugins: [
+    new CleanWebpackPlugin(['build'], { root: Path.resolve(__dirname, '..') }),
     new Webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('development')
     }),
