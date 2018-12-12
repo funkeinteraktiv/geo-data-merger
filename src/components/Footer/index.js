@@ -27,7 +27,9 @@ class Footer extends PureComponent {
     return (
       <FooterWrapper>
         <FooterInner>
-          <a href="https://github.com/funkeinteraktiv">Imprint / Privacy</a>
+          <a href="https://funkeinteraktiv.github.io/impressum-datenschutz/imprint.html">Imprint</a>
+          {' | '}
+          <a href="https://funkeinteraktiv.github.io/impressum-datenschutz/privacy.html">Privacy</a>
         </FooterInner>
       </FooterWrapper>
     );
