@@ -13,15 +13,9 @@ const Title = Styled.h1`
   font-weight: 400;
   font-size: 40px;
 
-<<<<<<< HEAD
-  @media screen and (min-width: 640px) {
-    font-size: 60px
-  }
-=======
   ${media.m`
     font-size: 60px;
   `}
->>>>>>> f78023ab42da51915779014de5729055b2050899
 `;
 
 const Bold = Styled.span`
