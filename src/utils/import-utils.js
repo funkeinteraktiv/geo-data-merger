@@ -29,7 +29,7 @@ export function parseCsv(file, isFirstRowHeader = true) {
       res = formattedCsv.parse(file);
     } else {
       res = formattedCsv.parseRows(file, d => d.reduce((row, item, i) => {
-        row[`column_${i + 1}`] = item;
+        row[`column_${i + 1}`] = item; // eslint-disable-line
         return row;
       }, {}));
     }

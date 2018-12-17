@@ -60,7 +60,7 @@ export function cleanData(data, options = {}) {
   return res;
 }
 
-export function getDownloadFileData(data, filetype, excludeFields = []) {
+export function getDownloadFileData(data, filetype, excludeFields = [], fileName = 'output') {
   const dataClean = cleanData(data, {
     excludeFields
   });
@@ -71,7 +71,7 @@ export function getDownloadFileData(data, filetype, excludeFields = []) {
     downloadData = {
       data: formatGeoJSON(dataClean),
       type: 'text/json;charset=utf-8',
-      name: 'output.geojson'
+      name: `${fileName}.geojson`
     };
   }
 
@@ -79,7 +79,7 @@ export function getDownloadFileData(data, filetype, excludeFields = []) {
     downloadData = {
       data: formatTopoJSON(dataClean),
       type: 'text/json;charset=utf-8',
-      name: 'output.topo.json'
+      name: `${fileName}.topo.json`
     };
   }
 
@@ -87,7 +87,7 @@ export function getDownloadFileData(data, filetype, excludeFields = []) {
     downloadData = {
       data: formatJSON(dataClean),
       type: 'text/json;charset=utf-8',
-      name: 'output.json'
+      name: `${fileName}.json`
     };
   }
 
@@ -95,15 +95,15 @@ export function getDownloadFileData(data, filetype, excludeFields = []) {
     downloadData = {
       data: formatCsv(dataClean),
       type: 'text/csv;charset=utf-8',
-      name: 'output.csv'
+      name: `${fileName}.csv`
     };
   }
 
   return downloadData;
 }
 
-export function downloadFile(data, filetype, excludeFields = []) {
-  const downloadData = getDownloadFileData(data, filetype, excludeFields);
+export function downloadFile(data, filetype, excludeFields = [], fileName) {
+  const downloadData = getDownloadFileData(data, filetype, excludeFields, fileName);
 
   if (downloadData) {
     const dataBlob = new Blob([downloadData.data], { type: downloadData.type });

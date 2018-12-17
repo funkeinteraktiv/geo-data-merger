@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import Styled from 'styled-components';
 import { connect } from 'unistore/react';
 
-import { mergedDataSelector, isBaseDataGeo } from '~/state/Selectors';
+import { mergedDataSelector, isBaseDataGeo, outputFileNameSelector } from '~/state/Selectors';
 import { downloadFile } from '~/utils';
 
 import Actions from '~/state/Actions';
@@ -61,7 +61,8 @@ class DownloadSection extends PureComponent {
       mergedData,
       downloadFormat,
       excludeFields,
-      baseIsGeo
+      baseIsGeo,
+      outputFileName
     } = this.props;
 
     const hasData = !!this.props.mergedData.length;
@@ -95,7 +96,12 @@ class DownloadSection extends PureComponent {
           <DownloadButtonWrapper>
             <DownloadButton
               disabled={!mergedData || !mergedData.length}
-              onClick={() => downloadFile(mergedData, downloadFormat, excludeFields)}
+              onClick={() => downloadFile(
+                mergedData,
+                downloadFormat,
+                excludeFields,
+                outputFileName
+              )}
             >
               Download
             </DownloadButton>
@@ -111,5 +117,6 @@ export default connect(state => ({
   mergedData: mergedDataSelector(state),
   downloadFormat: state.downloadFormat,
   excludeFields: state.excludeFields,
-  baseIsGeo: isBaseDataGeo(state)
+  baseIsGeo: isBaseDataGeo(state),
+  outputFileName: outputFileNameSelector(state)
 }), Actions)(DownloadSection);
