@@ -6,9 +6,6 @@ const Section = Styled.div`
   padding: 15px 0;
   border-top: 3px solid ${props => (props.isActive ? props.theme.colors.darkBackground : props.theme.colors.interactionInactive)};
 
-  &:last-child {
-    margin-bottom: 0;
-  }
 `;
 
 const SectionTitleWrapper = Styled.div`

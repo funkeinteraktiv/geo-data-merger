@@ -26,6 +26,8 @@ const DownloadButtonWrapper = Styled.div`
   background: ${props => props.theme.colors.section};
   padding: 16px;
   margin-top: 16px;
+  display: flex;
+  justify-content: center;
 `;
 
 const CheckboxWrapper = Styled.div`
@@ -36,9 +38,9 @@ const CheckboxWrapper = Styled.div`
   margin-bottom: 16px;
 `;
 
-// const SectionDownload = Styled(Section)`
-//   background: #ff5050;
-// `;
+const SectionDownload = Styled(Section)`
+  margin-bottom: 0;
+`;
 
 const step = 2;
 
