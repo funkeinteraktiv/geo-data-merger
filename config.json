@@ -11,5 +11,9 @@
     { "title": "Choose your files", "subtitle": "We can handle json, csv, geojson, topojson files.<br /><strong>We don't upload your data.</strong> Everything stays in your browser." },
     { "title": "Select keys to merge", "subtitle": "Choose the keys for merging the data." },
     { "title": "Save", "subtitle": "Choose which data should be included in your final result." }
-  ]
+  ],
+  "social": {
+    "twitter": "Geo Data Merger - A tool for merging data sets",
+    "facebook": "Geo Data Merger - A tool for merging data sets"
+  }
 }
