@@ -10,7 +10,11 @@ const Headline = Styled.div`
 const Title = Styled.h1`
   margin: 0;
   font-weight: 400;
-  font-size: 60px;
+  font-size: 40px;
+
+  @media screen and (min-width: 640px) {
+    font-size: 60px
+  }
 `;
 
 const Bold = Styled.span`

@@ -5,6 +5,10 @@ const Section = Styled.div`
   margin: 32px 0 16px 0;
   padding: 15px 0;
   border-top: 3px solid ${props => (props.isActive ? props.theme.colors.darkBackground : props.theme.colors.interactionInactive)};
+
+  &:last-child {
+    margin-bottom: 0;
+  }
 `;
 
 const SectionTitleWrapper = Styled.div`

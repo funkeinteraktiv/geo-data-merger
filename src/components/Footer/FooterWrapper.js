@@ -1,7 +1,6 @@
 import Styled from 'styled-components';
 
 export default Styled.div`
-  padding: 32px 0;
 
   .footer {
     margin-top: 20px;
@@ -10,6 +9,7 @@ export default Styled.div`
     line-height: 1.35;
     max-width: 960px;
     margin: 0 auto;
+    font-size: 13px;
 
     a {
       color: #222;
@@ -133,6 +133,7 @@ export default Styled.div`
     .footer {
       margin-top: 40px;
       padding-bottom: 40px;
+      font-size: 14px;
 
       hr {
         margin: 3em auto;
