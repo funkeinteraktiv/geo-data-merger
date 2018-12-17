@@ -40,9 +40,9 @@ const Subtitle = Styled.div`
 `;
 
 export default ({
-  title, subtitle, step, children, isActive = true
+  title, subtitle, step, children, isActive = true, className
 }) => (
-  <Section isActive={isActive}>
+  <Section isActive={isActive} className={className}>
     <SectionTitleWrapper isActive={isActive}>
       <Step isActive={isActive}>{step + 1}</Step>
       <Title isActive={isActive}>{title}</Title>

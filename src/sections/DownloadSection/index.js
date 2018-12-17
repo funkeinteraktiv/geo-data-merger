@@ -36,6 +36,10 @@ const CheckboxWrapper = Styled.div`
   margin-bottom: 16px;
 `;
 
+const SectionDownload = Styled(Section)`
+  background: #ff5050;
+`;
+
 const step = 2;
 
 class DownloadSection extends PureComponent {
@@ -72,7 +76,7 @@ class DownloadSection extends PureComponent {
       config.downloadFormats.filter(d => !['geojson', 'topojson'].includes(d));
 
     return (
-      <Section
+      <SectionDownload
         step={step}
         title={config.sections[step].title}
         subtitle={config.sections[step].subtitle}
@@ -107,7 +111,7 @@ class DownloadSection extends PureComponent {
             </DownloadButton>
           </DownloadButtonWrapper>
         </DownloadWrapper>
-      </Section>
+      </SectionDownload>
     );
   }
 }
