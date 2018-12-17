@@ -22,7 +22,7 @@ const Link = Styled.a`
   color: ${props => props.theme.colors.black}
   font-weight: 300;
   :hover, :visited, :active {
-    color: inherit   
+    color: inherit
   }
 `;
 
