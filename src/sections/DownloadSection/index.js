@@ -103,7 +103,7 @@ class DownloadSection extends PureComponent {
                 outputFileName
               )}
             >
-              Download
+              Save
             </DownloadButton>
           </DownloadButtonWrapper>
         </DownloadWrapper>
