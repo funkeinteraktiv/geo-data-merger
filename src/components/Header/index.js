@@ -1,23 +1,34 @@
 import React, { PureComponent } from 'react';
 import Styled from 'styled-components';
 
-import logoSrc from '../../../public/images/logo_big.png';
+import logoSrc from '../../../public/images/funkeinteraktiv_signet.png';
 
 const HeaderWrapper = Styled.header`
   padding: 8px 16px;
 `;
 
 const Logo = Styled.img`
-  max-width: 100px;
+  max-width: 50px;
+`;
+
+const Name = Styled.span`
+  margin-left: 2em;
+`;
+
+const Link = Styled.a`
+  display: flex;
+  align-items: center;
+  text-decoration: none;
 `;
 
 class Header extends PureComponent {
   render() {
     return (
       <HeaderWrapper>
-        <a href="https://twitter.com/funkeinteraktiv">
+        <Link href="https://twitter.com/funkeinteraktiv">
           <Logo src={logoSrc} alt="Funke Logo" />
-        </a>
+          <Name>FUNKE <br />Interaktiv</Name>
+        </Link>
       </HeaderWrapper>
     );
   }
