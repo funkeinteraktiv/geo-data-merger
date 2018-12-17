@@ -23,17 +23,17 @@ class Footer extends PureComponent {
           <hr />
           <div className="footer__top">
             <div className="footer__credits">
-              A project by <a target="_blank" href="https://twitter.com/funkeinteraktiv">Funke Interaktiv</a> and <a href="https://webkid.io" target="_blank">webkid</a>
+              A project by <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/funkeinteraktiv">Funke Interaktiv</a> and <a href="https://webkid.io" target="_blank" rel="noopener noreferrer">webkid</a>
             </div>
             <div className="footer__source">
               Here is some space for some texxt. <br />
             </div>
             <div className="footer__sharing">
               <div className="footer__sharing-cta">Share this tool:</div>
-              <a target="_blank" className="btn-facebook btn-social" href={getFbLink()}>
+              <a target="_blank" rel="noopener noreferrer" className="btn-facebook btn-social" href={getFbLink()}>
                 <FbIcon />
               </a>
-              <a target="_blank" className="btn-twitter btn-social" href={getTwitterLink()}>
+              <a target="_blank" rel="noopener noreferrer" className="btn-twitter btn-social" href={getTwitterLink()}>
                 <TwIcon />
               </a>
             </div>
@@ -42,11 +42,11 @@ class Footer extends PureComponent {
             <div className="footer__interaktiv">
               <div className="footer__interaktiv-logo"><img src={fiSrc} alt="Funke Interaktiv logo" /></div>
               <div className="footer__interaktiv-title">Ein Projekt des Interaktiv-Teams der Funke Mediengruppe.</div>
-              <div className="footer__interaktiv-body">Weitere Anwedungen des Teams finden Sie in unserem <a target="_blank" href="<%=publication.baseUrl%>/portfolio/">Portfolio.</a> Haben Sie Anmerkungen oder einen Fehler entdeckt? Wir freuen uns über Ihre <a target="_blank" href="mailto:interaktiv@funkemedien.de">Mail.</a></div>
+              <div className="footer__interaktiv-body">Weitere Anwedungen des Teams finden Sie in unserem <a target="_blank" href="https://interaktiv.morgenpost/portfolio/" rel="noopener noreferrer">Portfolio.</a> Haben Sie Anmerkungen oder einen Fehler entdeckt? Wir freuen uns über Ihre <a target="_blank" href="mailto:interaktiv@funkemedien.de" rel="noopener noreferrer">Mail.</a></div>
             </div>
             <div className="footer__imprint">
               Geo Data Merger, 18.12.2018<br />
-              <a href="https://funkeinteraktiv.github.io/impressum-datenschutz/imprint.htm" target="_blank">Impressum</a> / <a href="https://funkeinteraktiv.github.io/impressum-datenschutz/privacy.html" target="_blank">Privacy</a>
+              <a href="https://funkeinteraktiv.github.io/impressum-datenschutz/imprint.htm" target="_blank" rel="noopener noreferrer">Impressum</a> / <a href="https://funkeinteraktiv.github.io/impressum-datenschutz/privacy.html" target="_blank" rel="noopener noreferrer">Privacy</a>
             </div>
           </div>
         </footer>

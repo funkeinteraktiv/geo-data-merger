@@ -76,8 +76,6 @@ export default Styled.div`
           background-color: #5eaade;
         }
 
-
-
         &:hover {
           border: none;
           opacity .9;
