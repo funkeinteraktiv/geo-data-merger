@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import Styled from 'styled-components';
 
-import logoSrc from '../../../public/images/funkeinteraktiv_signet.png';
+import logoSrc from '../../../public/images/fi-logo.png';
 
 const HeaderWrapper = Styled.header`
   padding: 8px 16px;
@@ -26,7 +26,10 @@ const HeaderWrapper = Styled.header`
 `;
 
 const Logo = Styled.img`
-  max-width: 50px;
+  max-height: 38px;
+  @media screen and (min-width: 640px) {
+    max-height: 48px;
+  }
 `;
 
 class Header extends PureComponent {
@@ -35,7 +38,7 @@ class Header extends PureComponent {
       <HeaderWrapper>
         <a href="https://twitter.com/funkeinteraktiv">
           <Logo src={logoSrc} alt="Funke Logo" />
-          <span>FUNKE <br />Interaktiv</span>
+          {/* <span>FUNKE <br />Interaktiv</span> */}
         </a>
       </HeaderWrapper>
     );
