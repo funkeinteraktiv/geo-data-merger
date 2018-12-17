@@ -4,7 +4,7 @@ export default Styled.div`
 
   .footer {
     margin-top: 20px;
-    padding-bottom: 0 16px 20px 16px;
+    padding: 0 16px 20px 16px;
     text-align: center;
     line-height: 1.35;
     max-width: 960px;
