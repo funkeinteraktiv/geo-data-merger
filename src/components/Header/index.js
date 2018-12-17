@@ -19,6 +19,7 @@ const Link = Styled.a`
   display: flex;
   align-items: center;
   text-decoration: none;
+  color: ${props => props.theme.colors.black};
 `;
 
 class Header extends PureComponent {
