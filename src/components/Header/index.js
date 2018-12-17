@@ -19,6 +19,11 @@ const Link = Styled.a`
   display: flex;
   align-items: center;
   text-decoration: none;
+  color: ${props => props.theme.colors.black}
+  font-weight: 300;
+  :hover, :visited, :active {
+    color: inherit   
+  }
 `;
 
 class Header extends PureComponent {
