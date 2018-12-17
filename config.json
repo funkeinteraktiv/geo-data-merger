@@ -8,9 +8,9 @@
   "defaultDelimiters": [",", ";", "\t"],
   "downloadFormats": ["csv", "json", "geojson", "topojson"],
   "sections": [
-    { "title": "Choose your files", "subtitle": "We can handle json, csv, geojson, topojson files.<br /><strong>We don't upload your data.</strong> Everything stays in your browser." },
-    { "title": "Select keys to merge", "subtitle": "Choose the keys for merging the data." },
-    { "title": "Save", "subtitle": "Choose which data should be included in your final result." }
+    { "title": "Choose your files", "subtitle": "We can handle json, csv, geojson and topojson files.<br /><strong>We don't upload your data.</strong> Everything stays in your browser." },
+    { "title": "Select keys to merge by", "subtitle": "Choose the keys to merge the data by." },
+    { "title": "Save", "subtitle": "Choose which keys should be included in your final result." }
   ],
   "social": {
     "twitter": "Geo Data Merger - A tool for merging data sets by @funkeinteraktiv",
