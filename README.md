@@ -1,6 +1,6 @@
 # Geo Data Merger
 
-A small tool for merging datasets.
+The Geo Data Merger is an open source tool for merging data from csv, json, geo- and topojson files.
 
 ![screenshot](/screenshot.png)
 
@@ -30,3 +30,6 @@ $ npm run build
 #### Based on
 
 https://github.com/wbkd/react-starter
+
+
+A project by [Funke Interaktiv](https://twitter.com/funkeinteraktiv) and [webkid](https://webkid.io/).
