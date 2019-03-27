@@ -1,21 +1,12 @@
 import * as D3Dsv from 'd3-dsv';
 import * as TopoJSON from 'topojson';
 import { getType } from '@turf/invariant';
-
-function regexEscape(str) {
-  return str.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&');
-}
-
-function getDelimiterRxp(delim) {
-  const rxp = `^[^\\n\\r]+${regexEscape(delim)}`;
-  return new RegExp(rxp);
-}
+import maxBy from 'lodash.maxby';
 
 export function guessDelimiter(file) {
-  return config.defaultDelimiters.find((delim) => {
-    const rxp = getDelimiterRxp(delim);
-    return rxp.test(file);
-  }) || ',';
+  const firstRow = file.split('\n')[0];
+  // return the delimiter that is most present in the first row
+  return maxBy(config.defaultDelimiters, delim => firstRow.split(delim).length - 1);
 }
 
 export function parseCsv(file, isFirstRowHeader = true) {

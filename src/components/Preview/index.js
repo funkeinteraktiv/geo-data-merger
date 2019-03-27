@@ -27,6 +27,10 @@ class Preview extends PureComponent {
     const { data, filetype, excludeFields } = this.props;
     const dataAsString = getDownloadFileData(data, filetype, excludeFields);
 
+    if (!dataAsString) {
+      return null;
+    }
+
     return (
       <PreviewWrapper>
         <TextArea value={dataAsString.data} readOnly />

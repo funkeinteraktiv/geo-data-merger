@@ -71,7 +71,7 @@ class DownloadSection extends PureComponent {
       outputFileName
     } = this.props;
 
-    const hasData = this.props.mergedData.data && !!this.props.mergedData.data.length;
+    const hasData = mergedData.data && !!mergedData.data.length;
     const isActive = baseData.length > 0;
     const formats = baseIsGeo ?
       config.downloadFormats :
