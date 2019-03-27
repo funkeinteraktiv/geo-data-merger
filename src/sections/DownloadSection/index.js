@@ -48,7 +48,7 @@ class DownloadSection extends PureComponent {
   renderCheckboxes() {
     return (
       <CheckboxWrapper>
-        {this.props.mergedData.columns.map(columnName => (
+        {this.props.mergedData.data.columns.map(columnName => (
           <Checkbox
             key={`FieldSelect__${columnName}`}
             checked={this.props.excludeFields.indexOf(columnName) === -1}
@@ -71,7 +71,7 @@ class DownloadSection extends PureComponent {
       outputFileName
     } = this.props;
 
-    const hasData = !!this.props.mergedData.length;
+    const hasData = this.props.mergedData.data && !!this.props.mergedData.data.length;
     const isActive = baseData.length > 0;
     const formats = baseIsGeo ?
       config.downloadFormats :
@@ -94,16 +94,16 @@ class DownloadSection extends PureComponent {
             value={downloadFormat || 'default'}
           />
           <Preview
-            data={mergedData}
+            data={mergedData.data}
             isActive={isActive}
             filetype={downloadFormat}
             excludeFields={excludeFields}
           />
           <DownloadButtonWrapper>
             <DownloadButton
-              disabled={!mergedData || !mergedData.length}
+              disabled={!mergedData.data || !mergedData.data.length}
               onClick={() => downloadFile(
-                mergedData,
+                mergedData.data,
                 downloadFormat,
                 excludeFields,
                 outputFileName

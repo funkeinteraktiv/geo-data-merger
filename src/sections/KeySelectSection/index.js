@@ -18,6 +18,11 @@ const SelectWrapper = Styled.div`
   padding: 16px;
 `;
 
+const MergedCountDisplay = Styled.div`
+  margin-top: 16px;
+  font-size: 15px;
+`;
+
 const step = 1;
 
 class KeySelectSection extends PureComponent {
@@ -61,7 +66,12 @@ class KeySelectSection extends PureComponent {
             </SelectWrapper>
           </Column>
         </Row>
-        {isActive && <DataTable data={resultData} excludeFields={excludeFields} />}
+        {isActive && <DataTable data={resultData.data} excludeFields={excludeFields} />}
+        {isActive && mergeData.length && (
+          <MergedCountDisplay>
+            {resultData.count} of {mergeData.length} rows have been successfully merged.
+          </MergedCountDisplay>
+        )}
       </Section>
     );
   }

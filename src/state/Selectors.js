@@ -24,18 +24,27 @@ export const mergedDataSelector = createSelector(
   [baseDataSelector, baseKeySelector, mergeDataMapSelector],
   (baseData, baseKey, mergeDataMap) => {
     let res = [];
+    let mergedRowsCount = 0;
 
     if (baseData) {
       res = baseData.map((d) => {
         const key = d[baseKey];
         const addData = mergeDataMap.get(key);
+
+        if (addData) {
+          mergedRowsCount++; // eslint-disable-line
+        }
+
         return Object.assign({}, d, addData);
       });
     }
 
     res.columns = getColumns(res);
 
-    return res;
+    return {
+      count: mergedRowsCount,
+      data: res
+    };
   }
 );
 
