@@ -1,17 +1,18 @@
 {
-  "name": "react-starter",
+  "private": true,
+  "name": "geo-data-merger",
   "config": {
-    "appname": "my-app-name"
+    "appname": "geo-data-merger"
   },
-  "version": "6.0.1",
-  "description": "lightweight react starterkit including webpack, unistore, styled components",
+  "version": "6.0.2",
+  "description": "A data merger for json, csv, geojson and topojson files.",
   "scripts": {
     "build": "BABEL_ENV=production webpack --config webpack/webpack.config.prod.js --colors",
     "start": "webpack-dev-server --config webpack/webpack.config.dev.js",
     "deploy": "npm run build && git add docs && git commit -m 'chore(site): update' && git push"
   },
   "repository": {
-    "url": "git@github.com:wbkd/react-starter.git",
+    "url": "git@github.com:funkeinteraktiv/geo-data-merger.git",
     "type": "git"
   },
   "author": "webkid.io",
