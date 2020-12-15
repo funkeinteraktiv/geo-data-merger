@@ -22,7 +22,7 @@ class Footer extends PureComponent {
         <footer className="footer">
           <hr />
           <div className="footer__top">
-          <div className="footer__source">
+            <div className="footer__source">
               The Geo Data Merger is a desktop <a target="_blank" href="https://github.com/funkeinteraktiv/geo-data-merger" rel="noopener noreferrer">open source tool</a> for merging data from csv, json, geo- and topojson files.<br />
             </div>
             <div className="footer__sharing">
@@ -39,7 +39,7 @@ class Footer extends PureComponent {
             <div className="footer__interaktiv">
               <div className="footer__interaktiv-logo"><img src={fiSrc} alt="Funke Interaktiv logo" /></div>
               <div className="footer__interaktiv-title">A project by <a target="_blank" href="https://twitter.com/funkeinteraktiv" rel="noopener noreferrer">Funke Interaktiv</a> and <a target="_blank" href="https://webkid.io/" rel="noopener noreferrer">webkid</a>.</div>
-              <div className="footer__interaktiv-body">Further projects of the team can be found in our <a target="_blank" href="https://interaktiv.morgenpost.de/portfolio/" rel="noopener noreferrer">portfolio.</a> Do you want to leave any feedback or report a bug? We're looking forward to your <a target="_blank" href="mailto:interaktiv@funkemedien.de" rel="noopener noreferrer">email.</a></div>
+              <div className="footer__interaktiv-body">Further projects of the team can be found in our <a target="_blank" href="https://interaktiv.morgenpost.de/portfolio/" rel="noopener noreferrer">portfolio.</a> Do you want to leave any feedback or report a bug? We&apos;re looking forward to your <a target="_blank" href="mailto:interaktiv@funkemedien.de" rel="noopener noreferrer">email.</a></div>
             </div>
             <div className="footer__imprint">
               Geo Data Merger, 18.12.2018<br />
