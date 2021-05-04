@@ -4,7 +4,7 @@
   "config": {
     "appname": "geo-data-merger"
   },
-  "version": "6.0.3",
+  "version": "6.0.4",
   "description": "A data merger for json, csv, geojson and topojson files.",
   "scripts": {
     "build": "BABEL_ENV=production webpack --config webpack/webpack.config.prod.js --colors",
