@@ -28,7 +28,7 @@ export function parseCsv(file, isFirstRowHeader = true) {
     if (isFirstRowHeader) {
       res = formattedCsv.parse(file);
     } else {
-      res = formattedCsv.parseRows(file, d => d.reduce((row, item, i) => {
+      res = formattedCsv.parseRows(file, (d) => d.reduce((row, item, i) => {
         row[`column_${i + 1}`] = item; // eslint-disable-line
         return row;
       }, {}));
@@ -61,7 +61,7 @@ export function isTopoJSON(data) {
 }
 
 export function geoJSON2JSON(geoJSON) {
-  return geoJSON.features.map(feat => Object.assign({}, {
+  return geoJSON.features.map((feat) => ({
     ...feat.properties,
     __geometry: feat.geometry,
     __id: feat.id
@@ -77,7 +77,7 @@ export function topoJSON2JSON(topoJSON) {
 export function getColumns(data) {
   return data
     .reduce((prev, curr) => [...new Set(prev.concat(Object.keys(curr)))], [])
-    .filter(col => col.indexOf('__') !== 0);
+    .filter((col) => col.indexOf('__') !== 0);
 }
 
 export function unifyData(data) {

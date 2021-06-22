@@ -20,18 +20,6 @@ const StyledSelect = styled.select`
 `;
 
 class Select extends Component {
-  static propTypes = {
-    options: PropTypes.arrayOf(PropTypes.string),
-    onChange: PropTypes.func,
-    placeholder: PropTypes.string
-  }
-
-  static defaultProps = {
-    options: [],
-    onChange: () => {},
-    placeholder: 'Select...'
-  }
-
   onChange(evt) {
     this.props.onChange(evt.target.value);
   }
@@ -39,17 +27,29 @@ class Select extends Component {
   render() {
     return (
       <StyledSelect
-        onChange={evt => this.onChange(evt)}
+        onChange={(evt) => this.onChange(evt)}
         disabled={this.props.disabled}
         value={this.props.value}
       >
         {this.props.options.length === 0 && <option value="default" disabled>{this.props.placeholder}</option>}
-        {this.props.options.map(opt => (
+        {this.props.options.map((opt) => (
           <option value={opt} key={`Select__Option__${opt}`}>{opt}</option>
         ))}
       </StyledSelect>
     );
   }
 }
+
+Select.propTypes = {
+  options: PropTypes.arrayOf(PropTypes.string),
+  onChange: PropTypes.func,
+  placeholder: PropTypes.string
+};
+
+Select.defaultProps = {
+  options: [],
+  onChange: () => {},
+  placeholder: 'Select...'
+};
 
 export default Select;

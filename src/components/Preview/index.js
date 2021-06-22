@@ -8,14 +8,14 @@ const PreviewWrapper = Styled.div`
 `;
 
 const TextArea = Styled.textarea`
-  border: 1px solid ${props => props.theme.colors.section};
+  border: 1px solid ${(props) => props.theme.colors.section};
   padding: 16px;
   resize: vertical;
   width: 100%;
   min-height: 200px;
   font-size: 14px;
-  font-family: ${props => props.theme.fonts.mono};
-  color: ${props => props.theme.colors.black};
+  font-family: ${(props) => props.theme.fonts.mono};
+  color: ${(props) => props.theme.colors.black};
 `;
 
 class Preview extends PureComponent {

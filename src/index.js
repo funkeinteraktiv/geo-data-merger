@@ -14,10 +14,10 @@ root.id = 'root';
 ReactDOM.render(
   <Provider store={Store}>
     <ThemeProvider theme={theme}>
-      <Fragment>
+      <>
         <GlobalStyles />
         <App />
-      </Fragment>
+      </>
     </ThemeProvider>
   </Provider>,
   root

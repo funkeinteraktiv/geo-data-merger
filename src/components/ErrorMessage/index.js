@@ -2,7 +2,7 @@ import React from 'react';
 import Styled from 'styled-components';
 
 const Wrapper = Styled.div`
-  background: ${props => props.theme.colors.warning};
+  background: ${(props) => props.theme.colors.warning};
   padding: 12px;
   color: white;
   border-radius: 4px;
@@ -19,7 +19,7 @@ const Title = Styled.div`
   margin-bottom: 5px;
 `;
 
-export default props => (
+export default (props) => (
   <Wrapper>
     <Inner>
       <Title>An Error occured.</Title>

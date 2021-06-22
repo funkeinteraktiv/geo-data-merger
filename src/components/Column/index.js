@@ -1,7 +1,7 @@
 import Styled from 'styled-components';
 
 const Column = Styled.div`
-  display: ${props => (props.isVisible ? 'block' : 'none')};
+  display: ${(props) => (props.isVisible ? 'block' : 'none')};
   width: 46%;
 `;
 

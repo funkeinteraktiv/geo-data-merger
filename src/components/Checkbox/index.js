@@ -5,7 +5,7 @@ const Checkbox = Styled.div`
   margin-bottom: 8px;
   margin-right: 16px;
   font-weight: 700;
-  font-family: ${props => props.theme.fonts.sans};
+  font-family: ${(props) => props.theme.fonts.sans};
   display: flex;
   align-items: center;
   line-height: 1;
@@ -20,7 +20,7 @@ const CheckboxLabel = Styled.label`
   display: block;
 `;
 
-
+/* eslint-disable react/jsx-props-no-spreading */
 export default ({
   checked, onChange, label, ...rest
 }) => (

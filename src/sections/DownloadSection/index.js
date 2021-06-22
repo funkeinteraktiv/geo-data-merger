@@ -23,7 +23,7 @@ const DownloadButton = Styled(Button)`
 `;
 
 const DownloadButtonWrapper = Styled.div`
-  background: ${props => props.theme.colors.section};
+  background: ${(props) => props.theme.colors.section};
   padding: 16px;
   margin-top: 16px;
   display: flex;
@@ -31,7 +31,7 @@ const DownloadButtonWrapper = Styled.div`
 `;
 
 const CheckboxWrapper = Styled.div`
-  background: ${props => props.theme.colors.section};
+  background: ${(props) => props.theme.colors.section};
   padding: 16px;
   display: flex;
   flex-wrap: wrap;
@@ -48,7 +48,7 @@ class DownloadSection extends PureComponent {
   renderCheckboxes() {
     return (
       <CheckboxWrapper>
-        {this.props.mergedData.columns.map(columnName => (
+        {this.props.mergedData.columns.map((columnName) => (
           <Checkbox
             key={`FieldSelect__${columnName}`}
             checked={this.props.excludeFields.indexOf(columnName) === -1}
@@ -75,7 +75,7 @@ class DownloadSection extends PureComponent {
     const isActive = baseData.length > 0;
     const formats = baseIsGeo ?
       config.downloadFormats :
-      config.downloadFormats.filter(d => !['geojson', 'topojson'].includes(d));
+      config.downloadFormats.filter((d) => !['geojson', 'topojson'].includes(d));
 
     return (
       <SectionDownload
@@ -118,7 +118,7 @@ class DownloadSection extends PureComponent {
   }
 }
 
-export default connect(state => ({
+export default connect((state) => ({
   baseData: state.baseData,
   mergedData: mergedDataSelector(state),
   downloadFormat: state.downloadFormat,

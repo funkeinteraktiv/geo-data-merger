@@ -4,7 +4,7 @@ import Styled from 'styled-components';
 const Section = Styled.div`
   margin: 32px 0 16px 0;
   padding: 15px 0;
-  border-top: 3px solid ${props => (props.isActive ? props.theme.colors.darkBackground : props.theme.colors.interactionInactive)};
+  border-top: 3px solid ${(props) => (props.isActive ? props.theme.colors.darkBackground : props.theme.colors.interactionInactive)};
 
 `;
 
@@ -12,11 +12,11 @@ const SectionTitleWrapper = Styled.div`
   display: flex;
   align-items: center;
   margin-bottom: 10px;
-  opacity: ${props => (props.isActive ? 1 : 0.5)};
+  opacity: ${(props) => (props.isActive ? 1 : 0.5)};
 `;
 
 const Step = Styled.div`
-  background: ${props => (props.isActive ? props.theme.colors.interaction : props.theme.colors.interactionInactive)};
+  background: ${(props) => (props.isActive ? props.theme.colors.interaction : props.theme.colors.interactionInactive)};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -35,7 +35,7 @@ const Title = Styled.h2`
 
 const Subtitle = Styled.div`
   margin: 0 0 16px 0;
-  color: ${props => (props.isActive ? props.theme.colors.black : props.theme.colors.darkgray)};
+  color: ${(props) => (props.isActive ? props.theme.colors.black : props.theme.colors.darkgray)};
   font-size: 15px;
   line-height: 1.3;
 `;

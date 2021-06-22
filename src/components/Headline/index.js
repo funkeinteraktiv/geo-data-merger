@@ -24,14 +24,14 @@ const Bold = Styled.span`
 
 const Subtitle = Styled.div`
   margin: 10px 0 20px 0;
-  font-family: ${props => props.theme.fonts.mono};
+  font-family: ${(props) => props.theme.fonts.mono};
 `;
 
 export default () => (
-  <Fragment>
+  <>
     <Headline>
       <Title>(Geo) <Bold>DataMerger</Bold></Title>
       <Subtitle>A small tool for merging datasets.</Subtitle>
     </Headline>
-  </Fragment>
+  </>
 );

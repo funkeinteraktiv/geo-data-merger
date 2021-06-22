@@ -18,7 +18,7 @@ export function stringifyJSON(data) {
 }
 
 export function formatJSON(data) {
-  const res = data.map(d => removePropsFromObject(d, ['__geometry', '__id']));
+  const res = data.map((d) => (removePropsFromObject(d, ['__geometry', '__id'])));
   return stringifyJSON(res);
 }
 
@@ -46,7 +46,7 @@ export function formatTopoJSON(data) {
 }
 
 export function formatCsv(data) {
-  const res = data.map(d => removePropsFromObject(d, ['__geometry', '__id']));
+  const res = data.map((d) => removePropsFromObject(d, ['__geometry', '__id']));
   return csvFormat(res);
 }
 
@@ -54,7 +54,7 @@ export function cleanData(data, options = {}) {
   let res = data;
 
   if (options.excludeFields) {
-    res = res.map(d => removePropsFromObject(d, options.excludeFields));
+    res = res.map((d) => removePropsFromObject(d, options.excludeFields));
   }
 
   return res;

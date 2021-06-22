@@ -14,7 +14,7 @@ import { mergedDataSelector } from '~/state/Selectors';
 const SelectWrapper = Styled.div`
   display: flex;
   justify-content: center;
-  background: ${props => props.theme.colors.section};
+  background: ${(props) => props.theme.colors.section};
   padding: 16px;
 `;
 
@@ -26,8 +26,8 @@ class KeySelectSection extends PureComponent {
       baseData, mergeData, baseKey, mergeKey,
       resultData, excludeFields
     } = this.props;
-    const baseKeys = idx(baseData, _ => _.columns) || [];
-    const mergeKeys = idx(mergeData, _ => _.columns) || [];
+    const baseKeys = idx(baseData, (_) => _.columns) || [];
+    const mergeKeys = idx(mergeData, (_) => _.columns) || [];
     const isActive = baseData.length > 0;
 
     return (
@@ -67,7 +67,7 @@ class KeySelectSection extends PureComponent {
   }
 }
 
-export default connect(state => ({
+export default connect((state) => ({
   baseData: state.baseData,
   mergeData: state.mergeData,
   baseKey: state.baseKey,

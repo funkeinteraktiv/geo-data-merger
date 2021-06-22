@@ -14,7 +14,7 @@ import ErrorMessage from '~/components/ErrorMessage';
 import Checkbox from '~/components/Checkbox';
 
 const ButtonWrapper = Styled.div`
-  display: ${props => (props.isVisible ? 'block' : 'none')};
+  display: ${(props) => (props.isVisible ? 'block' : 'none')};
   width: 8%;
 
   button {
@@ -111,7 +111,7 @@ class FileChooserSection extends PureComponent {
   }
 }
 
-export default connect(state => ({
+export default connect((state) => ({
   baseData: state.baseData,
   baseFileName: state.baseFileName,
   baseFileType: state.baseFileType,

@@ -10,7 +10,7 @@ const HeaderWrapper = Styled.header`
     display: flex;
     align-items: center;
     text-decoration: none;
-    color: ${props => props.theme.colors.black}
+    color: ${(props) => props.theme.colors.black}
     font-weight: 300;
     }
 

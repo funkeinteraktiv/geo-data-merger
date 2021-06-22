@@ -12,7 +12,7 @@ const Textarea = Styled.textarea`
 `;
 
 const CopyPasteWrapper = Styled.div`
-  background: ${props => props.theme.colors.section};
+  background: ${(props) => props.theme.colors.section};
   padding: 16px;
   height: 200px;
 `;

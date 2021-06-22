@@ -15,8 +15,8 @@ export default createGlobalStyle`
     margin: 0;
     position: relative;
     font-family: 'Roboto', sans-serif;
-    background: ${props => props.theme.colors.background};
-    color: ${props => props.theme.colors.darkBackground};
+    background: ${(props) => props.theme.colors.background};
+    color: ${(props) => props.theme.colors.darkBackground};
   }
 
   body, html {

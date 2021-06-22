@@ -16,8 +16,8 @@ import { parseFile } from '~/utils';
 import CopyPasteTarget from './CopyPasteTarget';
 
 const StyledTabs = Styled(Tabs)`
-  opacity: ${props => (props.isActive ? 1 : 0.25)};
-  pointer-events: ${props => (props.isActive ? 'all' : 'none')};
+  opacity: ${(props) => (props.isActive ? 1 : 0.25)};
+  pointer-events: ${(props) => (props.isActive ? 'all' : 'none')};
 `;
 
 const TabContainer = Styled(TabList)`
@@ -33,7 +33,7 @@ const TabContainer = Styled(TabList)`
     font-weight: 700;
 
     &:hover, &--selected {
-      background: ${props => props.theme.colors.section};
+      background: ${(props) => props.theme.colors.section};
     }
   }
 `;
@@ -42,7 +42,7 @@ const Dropzone = Styled(ReactDropzone)`
   width: 100%;
   height: 200px;
   border-radius: 5px;
-  background: ${props => props.theme.colors.section};
+  background: ${(props) => props.theme.colors.section};
   padding: 16px;
   display: flex;
   align-items: center;
@@ -76,7 +76,7 @@ const CloseIconWrapper = Styled.div`
   position: absolute;
   right: -10px;
   top: -10px;
-  background: ${props => props.theme.colors.interaction};
+  background: ${(props) => props.theme.colors.interaction};
   border-radius: 50%;
   padding: 5px;
   display: flex;
@@ -95,22 +95,6 @@ const FileName = Styled.div`
 `;
 
 class FileHandler extends PureComponent {
-  static propTypes = {
-    onChange: PropTypes.func,
-    onError: PropTypes.func,
-    isActive: PropTypes.bool,
-    dropText: PropTypes.string,
-    textareaPlaceholder: PropTypes.string
-  }
-
-  static defaultProps = {
-    onChange: () => {},
-    onError: () => {},
-    isActive: true,
-    dropText: 'Drop file here',
-    textareaPlaceholder: 'Paste data here'
-  }
-
   onDrop(acceptedFiles) {
     if (!acceptedFiles.length) {
       return this.props.onError();
@@ -167,7 +151,7 @@ class FileHandler extends PureComponent {
 
     return (
       <FileWrapper>
-        <CloseIconWrapper onClick={evt => this.onDeleteFile(evt)}>
+        <CloseIconWrapper onClick={(evt) => this.onDeleteFile(evt)}>
           <CloseIcon size={20} />
         </CloseIconWrapper>
         <FileIcon size={48} />
@@ -176,6 +160,7 @@ class FileHandler extends PureComponent {
     );
   }
 
+  /* eslint-disable react/jsx-props-no-spreading */
   render() {
     return (
       <StyledTabs isActive={this.props.isActive}>
@@ -186,7 +171,7 @@ class FileHandler extends PureComponent {
         <TabPanel>
           <Dropzone
             accept={['.geojson', '.csv', '.json', '.topojson']}
-            onDrop={acceptedFiles => this.onDrop(acceptedFiles)}
+            onDrop={(acceptedFiles) => this.onDrop(acceptedFiles)}
             multiple={false}
           >
             {({ getRootProps }) => (
@@ -198,7 +183,7 @@ class FileHandler extends PureComponent {
         </TabPanel>
         <TabPanel>
           <CopyPasteTarget
-            onChange={evt => this.onPaste(evt)}
+            onChange={(evt) => this.onPaste(evt)}
             placeholder={this.props.textareaPlaceholder}
           />
         </TabPanel>
@@ -206,5 +191,21 @@ class FileHandler extends PureComponent {
     );
   }
 }
+
+FileHandler.propTypes = {
+  onChange: PropTypes.func,
+  onError: PropTypes.func,
+  isActive: PropTypes.bool,
+  dropText: PropTypes.string,
+  textareaPlaceholder: PropTypes.string
+};
+
+FileHandler.defaultProps = {
+  onChange: () => {},
+  onError: () => {},
+  isActive: true,
+  dropText: 'Drop file here',
+  textareaPlaceholder: 'Paste data here'
+};
 
 export default FileHandler;
