@@ -64,6 +64,14 @@ const FileWrapper = Styled.div`
   position: relative;
 `;
 
+const Drop = Styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #eee;
+  padding: 32px;
+`;
+
 const CloseIconWrapper = Styled.div`
   position: absolute;
   right: -10px;
@@ -150,7 +158,11 @@ class FileHandler extends PureComponent {
 
   renderFile() {
     if (!this.props.fileName) {
-      return this.props.dropText;
+      return (
+        <>
+          {this.props.dropText}
+        </>
+      );
     }
 
     return (
@@ -177,7 +189,11 @@ class FileHandler extends PureComponent {
             onDrop={acceptedFiles => this.onDrop(acceptedFiles)}
             multiple={false}
           >
-            {this.renderFile()}
+            {({ getRootProps }) => (
+              <Drop {...getRootProps()}>
+                {this.renderFile()}
+              </Drop>
+            )}
           </Dropzone>
         </TabPanel>
         <TabPanel>
