@@ -1,27 +1,27 @@
 const Path = require('path');
 const Webpack = require('webpack');
-const merge = require('webpack-merge');
+const merge = require('webpack-merge').merge;
 const common = require('./webpack.common.js');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin').CleanWebpackPlugin;
 
 const publicPath = process.env.BASENAME || '/';
 
 module.exports = merge(common, {
   mode: 'development',
-  devtool: 'cheap-eval-source-map',
+  devtool: 'cheap-source-map',
   output: {
     path: Path.join(__dirname, '../build'),
     chunkFilename: 'js/[name].chunk.js'
   },
   devServer: {
-    contentBase: Path.resolve(__dirname, 'build'),
+    static: Path.resolve(__dirname, 'build'),
     compress: true,
-    publicPath,
+    public: publicPath,
     historyApiFallback: true,
     host: '0.0.0.0'
   },
   plugins: [
-    new CleanWebpackPlugin(['build'], { root: Path.resolve(__dirname, '..') }),
+    new CleanWebpackPlugin({ root: Path.resolve(__dirname, '..') }),
     new Webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('development')
     }),

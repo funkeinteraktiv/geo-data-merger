@@ -1,6 +1,6 @@
 import { saveAs } from 'file-saver';
 import { feature, featureCollection } from '@turf/helpers';
-import { topology } from 'topojson';
+import { topology } from 'topojson-server';
 import { csvFormat } from 'd3-dsv';
 
 export function removePropsFromObject(obj, props = []) {

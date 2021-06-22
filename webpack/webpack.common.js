@@ -20,9 +20,9 @@ module.exports = {
     }
   },
   plugins: [
-    new CopyWebpackPlugin([
+    new CopyWebpackPlugin({ patterns: [
       { from: Path.resolve(__dirname, '../public'), to: 'public' }
-    ]),
+    ]}),
     new Webpack.ProvidePlugin({
       config: '~/../config.json'
     }),

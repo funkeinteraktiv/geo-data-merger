@@ -1,5 +1,5 @@
 import * as D3Dsv from 'd3-dsv';
-import * as TopoJSON from 'topojson';
+import * as TopoJSON from 'topojson-client';
 import { getType } from '@turf/invariant';
 
 function regexEscape(str) {
