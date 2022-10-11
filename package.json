@@ -78,5 +78,8 @@
     "topojson-server": "^3.0.1",
     "unfetch": "^4.2.0",
     "unistore": "^3.5.2"
+  },
+  "overrides": {
+    "nth-check": "2.0.1"
   }
 }
